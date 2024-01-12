@@ -75,25 +75,25 @@
 /*                                                                        */
 /**************************************************************************/
 static VOID _gx_dave2d_simulation_display_driver_32bpp_horizontal_pixelmap_line_compressed_write(GX_DRAW_CONTEXT *context,
-                                                                                                  INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
+        INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
 {
-INT                start_pos;
-INT                xval;
-GX_UBYTE           count;
-GX_UBYTE           alpha_value;
-GX_COLOR           pixel;
-GX_CONST GX_UBYTE *get;
-GX_BOOL            has_alpha;
-GX_PIXELMAP       *pixelmap;
-VOID               (*write_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color);
-VOID               (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
+    INT                start_pos;
+    INT                xval;
+    GX_UBYTE           count;
+    GX_UBYTE           alpha_value;
+    GX_COLOR           pixel;
+    GX_CONST GX_UBYTE *get;
+    GX_BOOL            has_alpha;
+    GX_PIXELMAP       *pixelmap;
+    VOID               (*write_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color);
+    VOID               (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
 
     write_func = _gx_display_driver_32bpp_pixel_write;
     blend_func = _gx_display_driver_24xrgb_pixel_blend;
     pixelmap = info -> pixelmap;
 
     if ((write_func == GX_NULL) ||
-        (blend_func == GX_NULL))
+            (blend_func == GX_NULL))
     {
         return;
     }
@@ -254,10 +254,10 @@ VOID               (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLO
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_32bpp_horizontal_pixelmap_line_draw(GX_DRAW_CONTEXT *context,
-                                                                               INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
+        INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
 {
-GX_BOOL drawn = GX_FALSE;
-GX_BOOL synergy_specific_format = GX_FALSE;
+    GX_BOOL drawn = GX_FALSE;
+    GX_BOOL synergy_specific_format = GX_FALSE;
 
     if (info -> pixelmap == GX_NULL)
     {

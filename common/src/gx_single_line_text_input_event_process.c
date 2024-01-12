@@ -82,9 +82,9 @@
 /**************************************************************************/
 static UINT _gx_single_line_text_input_pen_down_process(GX_SINGLE_LINE_TEXT_INPUT *text_input, GX_EVENT *event_ptr)
 {
-GX_RECTANGLE dirty_area;
-UINT         start_mark = text_input -> gx_single_line_text_input_start_mark;
-UINT         end_mark = text_input -> gx_single_line_text_input_end_mark;
+    GX_RECTANGLE dirty_area;
+    UINT         start_mark = text_input -> gx_single_line_text_input_start_mark;
+    UINT         end_mark = text_input -> gx_single_line_text_input_end_mark;
 
     _gx_system_input_capture((GX_WIDGET *)text_input);
 
@@ -161,12 +161,12 @@ UINT         end_mark = text_input -> gx_single_line_text_input_end_mark;
 /**************************************************************************/
 static UINT _gx_single_line_text_input_pen_drag_process(GX_SINGLE_LINE_TEXT_INPUT *text_input, GX_EVENT *event_ptr)
 {
-GX_RECTANGLE dirty_area;
-UINT         start_mark = text_input -> gx_single_line_text_input_start_mark;
-UINT         end_mark = text_input -> gx_single_line_text_input_end_mark;
-GX_VALUE     border_width;
-GX_RECTANGLE client;
-GX_VALUE     click_x;
+    GX_RECTANGLE dirty_area;
+    UINT         start_mark = text_input -> gx_single_line_text_input_start_mark;
+    UINT         end_mark = text_input -> gx_single_line_text_input_end_mark;
+    GX_VALUE     border_width;
+    GX_RECTANGLE client;
+    GX_VALUE     click_x;
 
     if (text_input -> gx_widget_status & GX_STATUS_OWNS_INPUT)
     {
@@ -217,7 +217,7 @@ GX_VALUE     click_x;
         }
 
         if ((start_mark != text_input -> gx_single_line_text_input_end_mark) ||
-            (start_mark != end_mark))
+                (start_mark != end_mark))
         {
             /* Retrieve text bounding rectangle between old and new end mark. */
             _gx_single_line_text_input_text_rectangle_get(text_input, (INT)(end_mark - text_input -> gx_single_line_text_input_end_mark), &dirty_area);
@@ -303,11 +303,11 @@ GX_VALUE     click_x;
 /**************************************************************************/
 UINT  _gx_single_line_text_input_event_process(GX_SINGLE_LINE_TEXT_INPUT *text_input, GX_EVENT *event_ptr)
 {
-UINT         status;
-GX_WIDGET   *widget = (GX_WIDGET *)text_input;
-GX_RECTANGLE dirty_area;
-GX_VALUE     blink_interval;
-ULONG        old_style;
+    UINT         status;
+    GX_WIDGET   *widget = (GX_WIDGET *)text_input;
+    GX_RECTANGLE dirty_area;
+    GX_VALUE     blink_interval;
+    ULONG        old_style;
 
     /* Default status to success.  */
     status =  GX_SUCCESS;
@@ -319,7 +319,7 @@ ULONG        old_style;
         _gx_widget_event_process(widget, event_ptr);
 
         if ((text_input -> gx_widget_style & GX_STYLE_CURSOR_ALWAYS) &&
-            (text_input -> gx_widget_style & GX_STYLE_CURSOR_BLINK))
+                (text_input -> gx_widget_style & GX_STYLE_CURSOR_BLINK))
         {
             _gx_system_timer_start((GX_WIDGET *)text_input, ID_TEXT_INPUT_TIMER, GX_CURSOR_BLINK_INTERVAL, GX_CURSOR_BLINK_INTERVAL);
         }
@@ -337,7 +337,7 @@ ULONG        old_style;
         {
             old_style = event_ptr -> gx_event_payload.gx_event_ulongdata;
             if ((old_style & (GX_STYLE_BORDER_MASK | GX_STYLE_TEXT_ALIGNMENT_MASK)) !=
-                (widget -> gx_widget_style & (GX_STYLE_BORDER_MASK | GX_STYLE_TEXT_ALIGNMENT_MASK)))
+                    (widget -> gx_widget_style & (GX_STYLE_BORDER_MASK | GX_STYLE_TEXT_ALIGNMENT_MASK)))
             {
                 _gx_single_line_text_input_position_update(text_input);
             }
@@ -450,7 +450,7 @@ ULONG        old_style;
         if (text_input -> gx_single_line_text_input_start_mark != text_input -> gx_single_line_text_input_end_mark)
         {
             _gx_single_line_text_input_text_rectangle_get(text_input,
-                                                          (INT)(text_input -> gx_single_line_text_input_start_mark - text_input -> gx_single_line_text_input_end_mark), &dirty_area);
+                    (INT)(text_input -> gx_single_line_text_input_start_mark - text_input -> gx_single_line_text_input_end_mark), &dirty_area);
 
             text_input -> gx_single_line_text_input_start_mark = 0;
             text_input -> gx_single_line_text_input_end_mark = 0;

@@ -77,18 +77,18 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_compressed_glyph_8bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                      GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_DISPLAY          *display;
-GX_UBYTE            *glyph_data;
-INT                  row;
-INT                  col;
-INT                  start_x;
-GX_COLOR             text_color;
-GX_UBYTE             alpha;
-GX_UBYTE             count;
-GX_COMPRESSED_GLYPH *compressed_glyph;
-GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
+    GX_DISPLAY          *display;
+    GX_UBYTE            *glyph_data;
+    INT                  row;
+    INT                  col;
+    INT                  start_x;
+    GX_COLOR             text_color;
+    GX_UBYTE             alpha;
+    GX_UBYTE             count;
+    GX_COMPRESSED_GLYPH *compressed_glyph;
+    GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
 
     if (brush_alpha == 0)
     {
@@ -154,13 +154,13 @@ GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alp
                         {
 
                             if ((col <= draw_area -> gx_rectangle_right) &&
-                                (col >= draw_area -> gx_rectangle_left))
+                                    (col >= draw_area -> gx_rectangle_left))
                             {
                                 display -> gx_display_driver_pixel_blend(context,
-                                                                         col,
-                                                                         row,
-                                                                         text_color,
-                                                                         (GX_UBYTE)alpha);
+                                        col,
+                                        row,
+                                        text_color,
+                                        (GX_UBYTE)alpha);
                             }
                             col++;
                         }
@@ -181,13 +181,13 @@ GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alp
                         if (alpha > 0)
                         {
                             if (col <= draw_area -> gx_rectangle_right &&
-                                col >= draw_area -> gx_rectangle_left)
+                                    col >= draw_area -> gx_rectangle_left)
                             {
                                 display -> gx_display_driver_pixel_blend(context,
-                                                                         col,
-                                                                         row,
-                                                                         text_color,
-                                                                         (GX_UBYTE)alpha);
+                                        col,
+                                        row,
+                                        text_color,
+                                        (GX_UBYTE)alpha);
                             }
                         }
                         col++;

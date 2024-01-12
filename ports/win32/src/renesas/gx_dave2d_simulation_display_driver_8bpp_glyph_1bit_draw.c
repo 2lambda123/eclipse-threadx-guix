@@ -83,22 +83,22 @@
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_8bpp_glyph_1bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area, GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_UBYTE *glyph_row;
-GX_UBYTE *glyph_data;
-UINT      row;
-UINT      pixel_per_row;
-UINT      pixel_in_first_byte;
-UINT      pixel_in_last_byte;
-GX_UBYTE  text_color;
-UINT      y_height;
-GX_UBYTE  alpha;
-UINT      glyph_width;
-GX_UBYTE *put;
-UINT      num_bytes;
-UINT      num_bits;
-GX_UBYTE *line_start;
-GX_UBYTE  mask, init_mask;
-UINT      i;
+    GX_UBYTE *glyph_row;
+    GX_UBYTE *glyph_data;
+    UINT      row;
+    UINT      pixel_per_row;
+    UINT      pixel_in_first_byte;
+    UINT      pixel_in_last_byte;
+    GX_UBYTE  text_color;
+    UINT      y_height;
+    GX_UBYTE  alpha;
+    UINT      glyph_width;
+    GX_UBYTE *put;
+    UINT      num_bytes;
+    UINT      num_bits;
+    GX_UBYTE *line_start;
+    GX_UBYTE  mask, init_mask;
+    UINT      i;
 
     text_color = (GX_UBYTE)context -> gx_draw_context_brush.gx_brush_line_color;
     pixel_per_row = (UINT)(draw_area -> gx_rectangle_right - draw_area -> gx_rectangle_left + 1);
@@ -173,25 +173,25 @@ UINT      i;
             {
             case 8:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 7:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 6:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 5:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 4:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 3:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 2:
                 DRAW_PIXEL;
-                /* fallthrough */
+            /* fallthrough */
             case 1:
                 DRAW_PIXEL;
                 /* fallthrough */

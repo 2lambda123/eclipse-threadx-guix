@@ -93,29 +93,29 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_32bpp_glyph_1bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                 GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_UBYTE *glyph_row;
-GX_UBYTE *glyph_data;
-UINT      row;
-GX_VALUE  pixel_per_row;
-GX_VALUE  pixel_in_first_byte;
-GX_VALUE  pixel_in_last_byte;
-GX_COLOR  text_color;
-UINT      y_height;
-GX_UBYTE  alpha;
-UINT      glyph_width;
-UINT     *put;
-UINT      num_bytes;
-UINT      num_bits;
-UINT     *line_start;
-GX_UBYTE  mask, init_mask;
-UINT      i;
-GX_UBYTE  brush_alpha = 0xff;
+    GX_UBYTE *glyph_row;
+    GX_UBYTE *glyph_data;
+    UINT      row;
+    GX_VALUE  pixel_per_row;
+    GX_VALUE  pixel_in_first_byte;
+    GX_VALUE  pixel_in_last_byte;
+    GX_COLOR  text_color;
+    UINT      y_height;
+    GX_UBYTE  alpha;
+    UINT      glyph_width;
+    UINT     *put;
+    UINT      num_bytes;
+    UINT      num_bits;
+    UINT     *line_start;
+    GX_UBYTE  mask, init_mask;
+    UINT      i;
+    GX_UBYTE  brush_alpha = 0xff;
 
 #if defined(GX_BRUSH_ALPHA_SUPPORT)
-INT  xval, yval;
-VOID (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
+    INT  xval, yval;
+    VOID (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
 
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
     if (brush_alpha == 0)

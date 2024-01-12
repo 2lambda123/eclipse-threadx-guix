@@ -739,7 +739,7 @@ typedef struct GX_STRING_STRUCT
 #define GX_TYPE_RICH_TEXT_VIEW              144
 #define GX_TYPE_GENERIC_SCROLL_WHEEL        145
 
-/* A pseudo-type, used by Studio code generator */ 
+/* A pseudo-type, used by Studio code generator */
 #define GX_TYPE_TEMPLATE                    200
 
 /* Applications can define their own window types */
@@ -1104,7 +1104,7 @@ typedef GX_UBYTE GX_CHAR_CODE;
 #if !defined(GX_MOUSE_MAX_RESOLUTION)
 #define GX_MOUSE_MAX_RESOLUTION 32
 #endif
-#endif 
+#endif
 
 #if defined(GX_DYNAMIC_BIDI_TEXT_SUPPORT)
 #define GX_PROMPT_BIDI_RESOLVED_TEXT_INFO               GX_BIDI_RESOLVED_TEXT_INFO *gx_prompt_bidi_resolved_text_info;
@@ -1176,7 +1176,7 @@ typedef struct GX_VIEW_STRUCT
     GX_UBYTE           gx_glyph_advance;      /* Glyph advance                                   */ \
     GX_BYTE            gx_glyph_leading;      /* Pen x-pre-advance                               */ \
     GX_UBYTE           gx_glyph_width;                                                              \
-    GX_UBYTE           gx_glyph_height;                                                             
+    GX_UBYTE           gx_glyph_height;
 
 /* Define the Glyph type.  */
 typedef struct GX_GLYPH_STRUCT
@@ -1188,15 +1188,15 @@ typedef struct GX_GLYPH_STRUCT
 /* Define the Kerning Glyph type.  */
 typedef struct GX_KERNING_GLYPH_STRUCT
 {
-    GX_GLYPH_MEMBERS_DECLARE                                                   
-    GX_CONST GX_UBYTE *gx_kerning_table;                   /* Kerning table */ 
+    GX_GLYPH_MEMBERS_DECLARE
+    GX_CONST GX_UBYTE *gx_kerning_table;                   /* Kerning table */
 } GX_KERNING_GLYPH;
 #endif
 
 /* Define the Compressed Glyph type.  */
 typedef struct GX_COMPRESSED_GLYPH_STRUCT
 {
-    GX_GLYPH_MEMBERS_DECLARE                                                     
+    GX_GLYPH_MEMBERS_DECLARE
     USHORT             gx_glyph_map_size;                       /* Glyph size */
 } GX_COMPRESSED_GLYPH;
 
@@ -1213,9 +1213,9 @@ typedef struct GX_FONT_STRUCT
     union {
         GX_CONST GX_GLYPH            *gx_font_normal_glyphs;        /* Array of GX_GLYPH structures             */
         GX_CONST GX_COMPRESSED_GLYPH *gx_font_compressed_glyphs;    /* Array of GX_COMPRESSED_GLYPH structures  */
-        #if defined (GX_FONT_KERNING_SUPPORT)
+#if defined (GX_FONT_KERNING_SUPPORT)
         GX_CONST GX_KERNING_GLYPH    *gx_font_kerning_glyphs;       /* Array of GX_KERNING_GLYPH structures     */
-        #endif
+#endif
     } gx_font_glyphs;
     GX_CONST struct GX_FONT_STRUCT *gx_font_next_page;         /* For multiple page fonts (Unicode)        */
 } GX_FONT;
@@ -1326,7 +1326,7 @@ typedef struct GX_EVENT_STRUCT
     USHORT gx_event_sender;                                     /* ID of the event sender                   */
     union
     {
-        UINT     gx_event_timer_id;                    
+        UINT     gx_event_timer_id;
         GX_POINT gx_event_pointdata;
         GX_UBYTE gx_event_uchardata[4];
         USHORT   gx_event_ushortdata[2];
@@ -1395,7 +1395,7 @@ typedef struct GX_PROGRESS_BAR_INFO_STRUCT
     GX_RESOURCE_ID gx_progress_bar_fill_pixelmap;
 } GX_PROGRESS_BAR_INFO;
 
-/* Define circular gauge information structure, this structure is used to 
+/* Define circular gauge information structure, this structure is used to
    define the appearance of the circular gauge widget.  */
 typedef struct GX_CIRCULAR_GAUGE_INFO_STRUCT
 {
@@ -1433,7 +1433,7 @@ typedef struct GX_RADIAL_PROGRESS_BAR_INFO_STRUCT
     GX_VALUE       gx_radial_progress_bar_info_selected_brush_width;   /* width of upper track.  */
     GX_RESOURCE_ID gx_radial_progress_bar_info_normal_brush_color;     /* resource ID of color for lower track.  */
     GX_RESOURCE_ID gx_radial_progress_bar_info_selected_brush_color;   /* resource ID of color for upper track.  */
-    
+
 } GX_RADIAL_PROGRESS_BAR_INFO;
 
 /* Define radial slider information structure, this structure is used to
@@ -1452,7 +1452,7 @@ typedef struct GX_RADIAL_SLIDER_INFO_STRUCT
     USHORT         gx_radial_slider_info_list_count;
     GX_RESOURCE_ID gx_radial_slider_info_background_pixelmap;
     GX_RESOURCE_ID gx_radial_slider_info_needle_pixelmap;
-}GX_RADIAL_SLIDER_INFO;
+} GX_RADIAL_SLIDER_INFO;
 
 /* Define GX_LINE_CHART information structure, this structure is used to
    define the appearance of the line chart widget.  */
@@ -1549,7 +1549,7 @@ typedef struct GX_FILL_PIXELMAP_INFO_STRUCT
     GX_UBYTE     mask;
     INT          x_offset;
     INT          y_offset;
-}GX_FILL_PIXELMAP_INFO;
+} GX_FILL_PIXELMAP_INFO;
 
 /* Display layer services structure type. These services may be provided by display drivers
    support multiple hardware graphics layers. */
@@ -1580,10 +1580,10 @@ typedef struct GX_DISPLAY_MOUSE_STRUCT
     GX_POINT                  gx_mouse_position;
     GX_UBYTE                  gx_mouse_status;
 
-    #if !defined(GX_HARDWARE_MOUSE_SUPPORT)
+#if !defined(GX_HARDWARE_MOUSE_SUPPORT)
     GX_RECTANGLE              gx_mouse_rect;
     GX_UBYTE                 *gx_mouse_capture_memory;
-    #endif
+#endif
 } GX_DISPLAY_MOUSE;
 #endif
 
@@ -1642,43 +1642,43 @@ typedef struct GX_DISPLAY_STRUCT
 
     /* Function for drawing non-aliased, single pixel line */
     VOID                     (*gx_display_driver_simple_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                   INT x1, INT y1, INT x2, INT y2);
+            INT x1, INT y1, INT x2, INT y2);
 
     /* Function for drawing non-aliased, wide line */
     VOID                     (*gx_display_driver_simple_wide_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                        INT x1, INT y1, INT x2, INT y2);
+            INT x1, INT y1, INT x2, INT y2);
 
     /* Function for drawing anti-aliased aliased, single-pixel line */
     VOID                     (*gx_display_driver_anti_aliased_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                         INT x1, INT y1, INT x2, INT y2);
+            INT x1, INT y1, INT x2, INT y2);
 
     /* Function for drawing anti-aliased aliased, wide line */
     VOID                     (*gx_display_driver_anti_aliased_wide_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                              INT x1, INT y1, INT x2, INT y2);
+            INT x1, INT y1, INT x2, INT y2);
 
     VOID                     (*gx_display_driver_horizontal_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                       INT x1, INT x2, INT ypos, INT width, GX_COLOR color);
+            INT x1, INT x2, INT ypos, INT width, GX_COLOR color);
     VOID                     (*gx_display_driver_horizontal_pixelmap_line_draw)(GX_DRAW_CONTEXT *context, INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info);
     VOID                     (*gx_display_driver_vertical_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                     INT y1, INT y2, INT xpos, INT width, GX_COLOR color);
+            INT y1, INT y2, INT xpos, INT width, GX_COLOR color);
     VOID                     (*gx_display_driver_horizontal_pattern_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                               INT x1, INT x2, INT ypos);
+            INT x1, INT x2, INT ypos);
     VOID                     (*gx_display_driver_vertical_pattern_line_draw)(GX_DRAW_CONTEXT *context,
-                                                                             INT y1, INT y2, INT xpos);
+            INT y1, INT y2, INT xpos);
     /* Define driver function pointers for canvas composite */
     VOID                     (*gx_display_driver_canvas_copy)(struct GX_CANVAS_STRUCT *source,
-                                                              struct GX_CANVAS_STRUCT *dest);
+            struct GX_CANVAS_STRUCT *dest);
     /* Define driver function pointers for canvas composite */
     VOID                     (*gx_display_driver_canvas_blend)(struct GX_CANVAS_STRUCT *source,
-                                                               struct GX_CANVAS_STRUCT *dest);
+            struct GX_CANVAS_STRUCT *dest);
 
     /* Define driver function pointers for pixelmap drawing */
     VOID                     (*gx_display_driver_pixelmap_draw)(GX_DRAW_CONTEXT *context,
-                                                                INT xpos, INT ypos, GX_PIXELMAP *pmp);
+            INT xpos, INT ypos, GX_PIXELMAP *pmp);
     VOID                     (*gx_display_driver_pixelmap_blend)(GX_DRAW_CONTEXT *context,
-                                                                 INT xpos, INT ypos, GX_PIXELMAP *pmp, GX_UBYTE alpha);
+            INT xpos, INT ypos, GX_PIXELMAP *pmp, GX_UBYTE alpha);
     VOID                     (*gx_display_driver_alphamap_draw)(GX_DRAW_CONTEXT *context,
-                                                                INT xpos, INT ypos, GX_PIXELMAP *pmp);
+            INT xpos, INT ypos, GX_PIXELMAP *pmp);
 
 #if defined(GX_SOFTWARE_DECODER_SUPPORT)
     /* driver function for decode raw jpg directly to frame buffer */
@@ -1687,19 +1687,19 @@ typedef struct GX_DISPLAY_STRUCT
 #endif
 
     VOID                     (*gx_display_driver_pixelmap_rotate)(GX_DRAW_CONTEXT *context, INT xpos, INT ypos, GX_PIXELMAP *pixelmap,
-                                                                  INT angle, INT rot_cx, INT rot_cy);
+            INT angle, INT rot_cx, INT rot_cy);
 
     /* Define driver function pointer for low-level pixel writing.  */
     VOID                     (*gx_display_driver_pixel_write)(GX_DRAW_CONTEXT *context,
-                                                              INT x, INT y, GX_COLOR color);
+            INT x, INT y, GX_COLOR color);
 
     /* Define driver function for block move. */
     VOID                     (*gx_display_driver_block_move)(GX_DRAW_CONTEXT *context,
-                                                             GX_RECTANGLE *block, INT xshift, INT yshift);
+            GX_RECTANGLE *block, INT xshift, INT yshift);
 
     /* Define driver function pointer for low-level pixel blending.  */
     VOID                     (*gx_display_driver_pixel_blend)(GX_DRAW_CONTEXT *context,
-                                                              INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
+            INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
 
     /* Define driver function pointer to convert 32-bit color to native format.  */
     GX_COLOR                 (*gx_display_driver_native_color_get)(struct GX_DISPLAY_STRUCT *display, GX_COLOR rawcolor);
@@ -1709,7 +1709,7 @@ typedef struct GX_DISPLAY_STRUCT
 
     /* Define driver function pointer for low-level buffer toggle.  */
     VOID                     (*gx_display_driver_buffer_toggle)(struct GX_CANVAS_STRUCT *canvas,
-                                                                GX_RECTANGLE *dirty_area);
+            GX_RECTANGLE *dirty_area);
 
     /* Define driver function pointer for drawing polygon.  */
     VOID                     (*gx_display_driver_polygon_draw)(GX_DRAW_CONTEXT *context, GX_POINT *vertex, INT num);
@@ -1719,27 +1719,27 @@ typedef struct GX_DISPLAY_STRUCT
 
     /* Define driver function pointer for drawing aliased 8bit glyph (may be NULL).  */
     VOID                     (*gx_display_driver_8bit_glyph_draw)(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                  GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
+            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
 
     /* Define driver function pointer for drawing aliased 4bit glyph (may be NULL).  */
     VOID                     (*gx_display_driver_4bit_glyph_draw)(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                  GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
+            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
 
     /* Define driver function pointer for drawing 1bit (monochrome) glyph.  */
     VOID                     (*gx_display_driver_1bit_glyph_draw)(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                  GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
+            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
 
     /* Define driver function pointer for drawing aliased 8bit compressed glyph (may be NULL).  */
     VOID                     (*gx_display_driver_8bit_compressed_glyph_draw)(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                             GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
+            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
 
     /* Define driver function pointer for drawing aliased 4bit compressed glyph (may be NULL).  */
     VOID                     (*gx_display_driver_4bit_compressed_glyph_draw)(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                             GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
+            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
 
     /* Define driver function pointer for drawing 1bit (monochrome) compressed glyph.  */
     VOID                     (*gx_display_driver_1bit_compressed_glyph_draw)(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                             GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
+            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph);
 
     VOID                     (*gx_display_driver_callback_assign)(UINT(*wait_func)(VOID *), VOID *);
 
@@ -1822,7 +1822,7 @@ typedef struct GX_CANVAS_STRUCT
 
     /* Define pointers to the next and previous canvases in the created list.  */
     struct GX_CANVAS_STRUCT *gx_canvas_created_next,
-                            *gx_canvas_created_previous;
+               *gx_canvas_created_previous;
 
     /* Define the canvas memory pointer.  */
     GX_COLOR *gx_canvas_memory;
@@ -1834,9 +1834,9 @@ typedef struct GX_CANVAS_STRUCT
 #endif
 
     /* padded canvas memory buffer, only needed for Win32 */
-    #ifdef GX_TARGET_WIN32
+#ifdef GX_TARGET_WIN32
     GX_COLOR *gx_canvas_padded_memory;
-    #endif
+#endif
 
     /* Define the size of the canvas memory.  */
     ULONG gx_canvas_memory_size;
@@ -1914,7 +1914,7 @@ typedef struct GX_PEN_CONFIGURATION_STRUCT
 #define GX_LANGUAGE_HEADER_NAME_SIZE 64
 
 /* Degine binary resource header type. */
-typedef struct GX_RESOURCE_HEADER_STRUCT{
+typedef struct GX_RESOURCE_HEADER_STRUCT {
     USHORT gx_resource_header_magic_number;
     USHORT gx_resource_header_version;
     USHORT gx_resource_header_theme_count;
@@ -1925,7 +1925,7 @@ typedef struct GX_RESOURCE_HEADER_STRUCT{
 } GX_RESOURCE_HEADER;
 
 /* Define binary theme header type. */
-typedef struct GX_THEME_HEADER_STRUCT{
+typedef struct GX_THEME_HEADER_STRUCT {
     USHORT                  gx_theme_header_magic_number;
     USHORT                  gx_theme_header_index;
     USHORT                  gx_theme_header_color_count;
@@ -1944,21 +1944,21 @@ typedef struct GX_THEME_HEADER_STRUCT{
 } GX_THEME_HEADER;
 
 /* Define binary color header type. */
-typedef struct GX_COLOR_HEADER_STRUCT{
+typedef struct GX_COLOR_HEADER_STRUCT {
     USHORT gx_color_header_magic_number;
     USHORT gx_color_header_color_count;
     ULONG  gx_color_header_data_size;
-}GX_COLOR_HEADER;
+} GX_COLOR_HEADER;
 
 /* Define binary palette header type.  */
-typedef struct GX_PALETTE_HEADER_STRUCT{
+typedef struct GX_PALETTE_HEADER_STRUCT {
     USHORT gx_palette_header_magic_number;
     USHORT gx_palette_header_color_count;
     ULONG  gx_palette_header_data_size;
-}GX_PALETTE_HEADER;
+} GX_PALETTE_HEADER;
 
 /* Define font header type. */
-typedef struct GX_FONT_HEADER_STRUCT{
+typedef struct GX_FONT_HEADER_STRUCT {
     USHORT    gx_font_header_magic_number;
     USHORT    gx_font_header_index;
     USHORT    gx_font_header_page_count;
@@ -1966,10 +1966,10 @@ typedef struct GX_FONT_HEADER_STRUCT{
     GX_UBYTE  gx_font_header_bits;
     ULONG     gx_font_header_data_size;
     ULONG     gx_font_header_data_offset;
-}GX_FONT_HEADER;
+} GX_FONT_HEADER;
 
 /* Define font page header type. */
-typedef struct GX_PAGE_HEADER_STRUCT{
+typedef struct GX_PAGE_HEADER_STRUCT {
     USHORT        gx_page_header_magic_number;
     USHORT        gx_page_header_index;
     GX_UBYTE      gx_page_header_format;
@@ -1980,7 +1980,7 @@ typedef struct GX_PAGE_HEADER_STRUCT{
     GX_CHAR_CODE  gx_page_header_first_glyph;
     GX_CHAR_CODE  gx_page_header_last_glyph;
     ULONG         gx_page_header_data_size;
-}GX_PAGE_HEADER;
+} GX_PAGE_HEADER;
 
 /* define glyph header type members. */
 #define GX_GLYPH_HEADER_MEMBERS_DECLARE                                              \
@@ -2000,17 +2000,17 @@ typedef struct GX_GLYPH_HEADER_STRUCT {
     GX_GLYPH_HEADER_MEMBERS_DECLARE
     ULONG     gx_glyph_header_data_size;
     USHORT    gx_glyph_header_kerning_table_size;
-}GX_KERNING_GLYPH_HEADER;
+} GX_KERNING_GLYPH_HEADER;
 
 /* define glyph header type. */
 /* Used for Guix berfore Kerning. */
 typedef struct GX_GLYPH_HEADER_BEFORE_KERNING_STRUCT {
     GX_GLYPH_HEADER_MEMBERS_DECLARE
     ULONG     gx_glyph_header_data_size;
-}GX_GLYPH_HEADER;
+} GX_GLYPH_HEADER;
 
 /* Define pixelmap header type. */
-typedef struct GX_PIXELMAP_HEADER_STRUCT{
+typedef struct GX_PIXELMAP_HEADER_STRUCT {
     USHORT      gx_pixelmap_header_magic_number;
     USHORT      gx_pixelmap_header_index;
     GX_UBYTE    gx_pixelmap_header_version_major;
@@ -2024,31 +2024,31 @@ typedef struct GX_PIXELMAP_HEADER_STRUCT{
     USHORT      gx_pixelmap_header_height;
     ULONG       gx_pixelmap_header_data_size;
     ULONG       gx_pixelmap_header_data_offset;
-}GX_PIXELMAP_HEADER;
+} GX_PIXELMAP_HEADER;
 
 /* Define string header type. */
-typedef struct GX_STRING_HEADER_STRUCT{
+typedef struct GX_STRING_HEADER_STRUCT {
     USHORT gx_string_header_magic_number;
     USHORT gx_string_header_language_count;
     USHORT gx_string_header_string_count;
     ULONG  gx_string_header_data_size;
-}GX_STRING_HEADER;
+} GX_STRING_HEADER;
 
 /* Define language header type. */
-typedef struct GX_LANGUAGE_HEADER_STRUCT{
+typedef struct GX_LANGUAGE_HEADER_STRUCT {
     USHORT gx_language_header_magic_number;
     USHORT gx_language_header_index;
     UCHAR  gx_language_header_name[GX_LANGUAGE_HEADER_NAME_SIZE];
     ULONG  gx_language_header_data_size;
-}GX_LANGUAGE_HEADER;
+} GX_LANGUAGE_HEADER;
 
 /* Define rich tet view fonts structure. */
-typedef struct GX_RICH_TEXT_FONTS_STRUCT{
+typedef struct GX_RICH_TEXT_FONTS_STRUCT {
     GX_RESOURCE_ID gx_rich_text_fonts_normal_id;
     GX_RESOURCE_ID gx_rich_text_fonts_bold_id;
     GX_RESOURCE_ID gx_rich_text_fonts_italic_id;
     GX_RESOURCE_ID gx_rich_text_fonts_bold_italic_id;
-}GX_RICH_TEXT_FONTS;
+} GX_RICH_TEXT_FONTS;
 
 /* Define rich text flags. */
 #define GX_RICH_TEXT_BOLD         0x01
@@ -2066,14 +2066,14 @@ typedef struct GX_RICH_TEXT_FORMAT_STRUCT
     GX_RESOURCE_ID gx_rich_text_highlight_color;
     GX_RESOURCE_ID gx_rich_text_font_id;
     GX_UBYTE       gx_rich_text_flags;
-}GX_RICH_TEXT_FORMAT;
+} GX_RICH_TEXT_FORMAT;
 
 /* Define rich text context structure. */
 typedef struct GX_RICH_TEXT_CONTEXT_STRUCT
 {
     GX_RICH_TEXT_FORMAT gx_rich_text_context_format;
     GX_CONST GX_STRING *gx_rich_text_context_tag;
-}GX_RICH_TEXT_CONTEXT;
+} GX_RICH_TEXT_CONTEXT;
 
 /* Define rich text context stack structure. */
 typedef struct GX_RICH_TEXT_CONTEXT_STACK_STRUCT
@@ -2541,7 +2541,7 @@ typedef struct GX_PROMPT_STRUCT
 typedef struct GX_NUMERIC_PROMPT_STRUCT
 {
     GX_NUMERIC_PROMPT_MEMBERS_DECLARE
-}GX_NUMERIC_PROMPT;
+} GX_NUMERIC_PROMPT;
 
 /* Define Pixelmap type.  */
 
@@ -2554,7 +2554,7 @@ typedef struct GX_PIXELMAP_PROMPT_STRUCT
 typedef struct GX_NUMERIC_PIXELMAP_PROMPT_STRUCT
 {
     GX_NUMERIC_PIXELMAP_PROMPT_MEMBERS_DECLARE
-}GX_NUMERIC_PIXELMAP_PROMPT;
+} GX_NUMERIC_PIXELMAP_PROMPT;
 
 /* Define Icon type.  */
 
@@ -2709,7 +2709,7 @@ typedef struct GX_RICH_TEXT_INOT_STRUCT
     USHORT   gx_rich_text_info_style;
     ULONG    gx_rich_text_info_start_index;
     ULONG    gx_rich_text_info_end_index;
-}GX_RICH_TEXT_INFO;
+} GX_RICH_TEXT_INFO;
 
 /*Define GX_MULTI_TEXT_INPUT type. */
 
@@ -2803,22 +2803,22 @@ typedef struct GX_NUMERIC_SCROLL_WHEEL_STRUCT
 typedef struct GX_MENU_LIST_STRUCT
 {
     GX_MENU_LIST_MEMBERS_DECLARE
-}GX_MENU_LIST;
+} GX_MENU_LIST;
 
 typedef struct GX_MENU_STRUCT
 {
     GX_MENU_MEMBERS_DECLARE
-}GX_MENU;
+} GX_MENU;
 
 typedef struct GX_ACCORDION_MENU_STRUCT
 {
     GX_ACCORDION_MENU_MEMBERS_DECLARE
-}GX_ACCORDION_MENU;
+} GX_ACCORDION_MENU;
 
 typedef struct GX_TREE_VIEW_STRUCT
 {
     GX_TREE_VIEW_MEMBERS_DECLARE
-}GX_TREE_VIEW;
+} GX_TREE_VIEW;
 
 /* Animation information structure. This structure is used to define the
    parameters of a screen transition animation.  */
@@ -3929,7 +3929,7 @@ UINT _gx_multi_line_text_button_text_set_ext(GX_MULTI_LINE_TEXT_BUTTON *button, 
 UINT _gx_multi_line_text_input_backspace(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gx_multi_line_text_input_buffer_clear(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr);
 UINT _gx_multi_line_text_input_buffer_get(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr, GX_CHAR **buffer_address,
-                                          UINT *content_size, UINT *buffer_size);
+        UINT *content_size, UINT *buffer_size);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gx_multi_line_text_input_char_insert(GX_MULTI_LINE_TEXT_INPUT *text_input, GX_UBYTE *str, UINT str_size);
 #endif
@@ -3947,18 +3947,18 @@ UINT _gx_multi_line_text_input_style_add(GX_MULTI_LINE_TEXT_INPUT *text_input_pt
 UINT _gx_multi_line_text_input_style_remove(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr, ULONG cursor_type);
 UINT _gx_multi_line_text_input_style_set(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr, ULONG cursor_type);
 UINT _gx_multi_line_text_input_fill_color_set(GX_MULTI_LINE_TEXT_INPUT *view,
-                                              GX_RESOURCE_ID normal_id,
-                                              GX_RESOURCE_ID selected_id,
-                                              GX_RESOURCE_ID disabled_id,
-                                              GX_RESOURCE_ID readonly_id);
+        GX_RESOURCE_ID normal_id,
+        GX_RESOURCE_ID selected_id,
+        GX_RESOURCE_ID disabled_id,
+        GX_RESOURCE_ID readonly_id);
 UINT _gx_multi_line_text_input_home(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gx_multi_line_text_input_left_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gx_multi_line_text_input_right_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gx_multi_line_text_input_text_color_set(GX_MULTI_LINE_TEXT_INPUT *view,
-                                              GX_RESOURCE_ID normal_id,
-                                              GX_RESOURCE_ID selected_id,
-                                              GX_RESOURCE_ID disabled_id,
-                                              GX_RESOURCE_ID readonly_id);
+        GX_RESOURCE_ID normal_id,
+        GX_RESOURCE_ID selected_id,
+        GX_RESOURCE_ID disabled_id,
+        GX_RESOURCE_ID readonly_id);
 UINT _gx_multi_line_text_input_text_select(GX_MULTI_LINE_TEXT_INPUT *input, UINT start_index, UINT end_index);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gx_multi_line_text_input_text_set(GX_MULTI_LINE_TEXT_INPUT *text_input, GX_CONST GX_CHAR *text);
@@ -4094,9 +4094,9 @@ UINT _gx_radial_progress_bar_event_process(GX_RADIAL_PROGRESS_BAR *progress_bar,
 UINT _gx_radial_progress_bar_font_set(GX_RADIAL_PROGRESS_BAR *progress_bar, GX_RESOURCE_ID font_id);
 UINT _gx_radial_progress_bar_info_set(GX_RADIAL_PROGRESS_BAR *bar, GX_RADIAL_PROGRESS_BAR_INFO *info);
 UINT _gx_radial_progress_bar_text_color_set(GX_RADIAL_PROGRESS_BAR *progress_bar,
-                                            GX_RESOURCE_ID normal_text_color_id,
-                                            GX_RESOURCE_ID selected_text_color_id,
-                                            GX_RESOURCE_ID disabled_text_color_id);
+        GX_RESOURCE_ID normal_text_color_id,
+        GX_RESOURCE_ID selected_text_color_id,
+        GX_RESOURCE_ID disabled_text_color_id);
 VOID _gx_radial_progress_bar_text_draw(GX_RADIAL_PROGRESS_BAR *bar);
 UINT _gx_radial_progress_bar_value_set(GX_RADIAL_PROGRESS_BAR *progress_bar, GX_VALUE new_value);
 
@@ -4149,7 +4149,7 @@ UINT _gx_scroll_wheel_total_rows_set(GX_SCROLL_WHEEL *wheel, INT total_rows);
 UINT _gx_single_line_text_input_backspace(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gx_single_line_text_input_buffer_clear(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gx_single_line_text_input_buffer_get(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr, GX_CHAR **buffer_address,
-                                           UINT *content_size, UINT *buffer_size);
+        UINT *content_size, UINT *buffer_size);
 UINT _gx_single_line_text_input_character_delete(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gx_single_line_text_input_character_insert(GX_SINGLE_LINE_TEXT_INPUT *text_input, GX_UBYTE *str, UINT str_size);
 UINT _gx_single_line_text_input_create(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr,
@@ -4161,10 +4161,10 @@ UINT _gx_single_line_text_input_draw_position_get(GX_SINGLE_LINE_TEXT_INPUT *inp
 UINT _gx_single_line_text_input_end(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gx_single_line_text_input_event_process(GX_SINGLE_LINE_TEXT_INPUT *text_input, GX_EVENT *event_ptr);
 UINT _gx_single_line_text_input_fill_color_set(GX_SINGLE_LINE_TEXT_INPUT *input,
-                                               GX_RESOURCE_ID normal_fill_color_id,
-                                               GX_RESOURCE_ID selected_fill_color_id,
-                                               GX_RESOURCE_ID disabled_fill_color_id,
-                                               GX_RESOURCE_ID readonly_fill_color_id);
+        GX_RESOURCE_ID normal_fill_color_id,
+        GX_RESOURCE_ID selected_fill_color_id,
+        GX_RESOURCE_ID disabled_fill_color_id,
+        GX_RESOURCE_ID readonly_fill_color_id);
 UINT _gx_single_line_text_input_home(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gx_single_line_text_input_left_arrow(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gx_single_line_text_input_position_get(GX_SINGLE_LINE_TEXT_INPUT *text_input, INT pixel_position);
@@ -4173,10 +4173,10 @@ UINT _gx_single_line_text_input_style_add(GX_SINGLE_LINE_TEXT_INPUT *text_input_
 UINT _gx_single_line_text_input_style_remove(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr, ULONG style);
 UINT _gx_single_line_text_input_style_set(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr, ULONG style);
 UINT _gx_single_line_text_input_text_color_set(GX_SINGLE_LINE_TEXT_INPUT *input,
-                                               GX_RESOURCE_ID normal_text_color_id,
-                                               GX_RESOURCE_ID selected_text_color_id,
-                                               GX_RESOURCE_ID disabled_text_color_id,
-                                               GX_RESOURCE_ID readonly_text_color_id);
+        GX_RESOURCE_ID normal_text_color_id,
+        GX_RESOURCE_ID selected_text_color_id,
+        GX_RESOURCE_ID disabled_text_color_id,
+        GX_RESOURCE_ID readonly_text_color_id);
 UINT _gx_single_line_text_input_text_select(GX_SINGLE_LINE_TEXT_INPUT *input, UINT start_index, UINT end_index);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gx_single_line_text_input_text_set(GX_SINGLE_LINE_TEXT_INPUT *input, GX_CONST GX_CHAR *text);
@@ -4214,17 +4214,17 @@ UINT _gx_string_scroll_wheel_create_ext(GX_STRING_SCROLL_WHEEL *wheel, GX_CONST 
                                         ULONG style, USHORT Id, GX_CONST GX_RECTANGLE *size);
 UINT _gx_string_scroll_wheel_event_process(GX_STRING_SCROLL_WHEEL *wheel, GX_EVENT *event_ptr);
 UINT _gx_string_scroll_wheel_string_id_list_set(GX_STRING_SCROLL_WHEEL *wheel,
-                                                GX_CONST GX_RESOURCE_ID *string_id_list,
-                                                INT id_count);
+        GX_CONST GX_RESOURCE_ID *string_id_list,
+        INT id_count);
 
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gx_string_scroll_wheel_string_list_set(GX_STRING_SCROLL_WHEEL *wheel,
-                                             GX_CONST GX_CHAR **string_list,
-                                             INT string_count);
+        GX_CONST GX_CHAR **string_list,
+        INT string_count);
 #endif
 UINT _gx_string_scroll_wheel_string_list_set_ext(GX_STRING_SCROLL_WHEEL *wheel,
-                                                 GX_CONST GX_STRING *string_list,
-                                                 INT string_count);
+        GX_CONST GX_STRING *string_list,
+        INT string_count);
 
 UINT _gx_system_active_language_set(GX_UBYTE language);
 
@@ -4313,7 +4313,7 @@ VOID _gx_text_scroll_wheel_draw(GX_TEXT_SCROLL_WHEEL *wheel);
 UINT _gx_text_scroll_wheel_event_process(GX_TEXT_SCROLL_WHEEL *wheel, GX_EVENT *event_ptr);
 UINT _gx_text_scroll_wheel_font_set(GX_TEXT_SCROLL_WHEEL *wheel, GX_RESOURCE_ID normal_font, GX_RESOURCE_ID selected_font);
 UINT _gx_text_scroll_wheel_text_color_set(GX_TEXT_SCROLL_WHEEL *wheel, GX_RESOURCE_ID normal_text_color,
-                                          GX_RESOURCE_ID selected_text_color, GX_RESOURCE_ID disabled_text_color);
+        GX_RESOURCE_ID selected_text_color, GX_RESOURCE_ID disabled_text_color);
 
 UINT _gx_tree_view_create(GX_TREE_VIEW *tree, GX_CONST GX_CHAR *name, GX_WIDGET *parent,
                           ULONG style, USHORT tree_view_id, GX_CONST GX_RECTANGLE *size);
@@ -5399,7 +5399,7 @@ UINT _gxe_multi_line_text_button_text_set_ext(GX_MULTI_LINE_TEXT_BUTTON *button,
 UINT _gxe_multi_line_text_input_backspace(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gxe_multi_line_text_input_buffer_clear(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr);
 UINT _gxe_multi_line_text_input_buffer_get(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr, GX_CHAR **buffer_address,
-                                           UINT *content_size, UINT *buffer_size);
+        UINT *content_size, UINT *buffer_size);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gxe_multi_line_text_input_char_insert(GX_MULTI_LINE_TEXT_INPUT *text_input, GX_UBYTE *str, UINT str_size);
 #endif
@@ -5417,18 +5417,18 @@ UINT _gxe_multi_line_text_input_style_add(GX_MULTI_LINE_TEXT_INPUT *text_input_p
 UINT _gxe_multi_line_text_input_style_remove(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr, ULONG cursor_type);
 UINT _gxe_multi_line_text_input_style_set(GX_MULTI_LINE_TEXT_INPUT *text_input_ptr, ULONG cursor_type);
 UINT _gxe_multi_line_text_input_fill_color_set(GX_MULTI_LINE_TEXT_INPUT *view,
-                                               GX_RESOURCE_ID normal_color_id,
-                                               GX_RESOURCE_ID selected_color_id,
-                                               GX_RESOURCE_ID disabled_color_id,
-                                               GX_RESOURCE_ID readonly_color_id);
+        GX_RESOURCE_ID normal_color_id,
+        GX_RESOURCE_ID selected_color_id,
+        GX_RESOURCE_ID disabled_color_id,
+        GX_RESOURCE_ID readonly_color_id);
 UINT _gxe_multi_line_text_input_home(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gxe_multi_line_text_input_left_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gxe_multi_line_text_input_right_arrow(GX_MULTI_LINE_TEXT_INPUT *text_input);
 UINT _gxe_multi_line_text_input_text_color_set(GX_MULTI_LINE_TEXT_INPUT *view,
-                                               GX_RESOURCE_ID normal_color_id,
-                                               GX_RESOURCE_ID selected_color_id,
-                                               GX_RESOURCE_ID disabled_color_id,
-                                               GX_RESOURCE_ID readonly_color_id);
+        GX_RESOURCE_ID normal_color_id,
+        GX_RESOURCE_ID selected_color_id,
+        GX_RESOURCE_ID disabled_color_id,
+        GX_RESOURCE_ID readonly_color_id);
 UINT _gxe_multi_line_text_input_text_select(GX_MULTI_LINE_TEXT_INPUT *input, UINT start_index, UINT end_index);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gxe_multi_line_text_input_text_set(GX_MULTI_LINE_TEXT_INPUT *text_input, GX_CONST GX_CHAR *text);
@@ -5446,9 +5446,9 @@ UINT _gxe_multi_line_text_view_font_set(GX_MULTI_LINE_TEXT_VIEW *view, GX_RESOUR
 UINT _gxe_multi_line_text_view_line_space_set(GX_MULTI_LINE_TEXT_VIEW *view, GX_BYTE line_space);
 UINT _gxe_multi_line_text_view_scroll_info_get(GX_MULTI_LINE_TEXT_VIEW *view, ULONG style, GX_SCROLL_INFO *return_scroll_info);
 UINT _gxe_multi_line_text_view_text_color_set(GX_MULTI_LINE_TEXT_VIEW *view,
-                                              GX_RESOURCE_ID normal_color_id,
-                                              GX_RESOURCE_ID selected_color_id,
-                                              GX_RESOURCE_ID disabled_color_id);
+        GX_RESOURCE_ID normal_color_id,
+        GX_RESOURCE_ID selected_color_id,
+        GX_RESOURCE_ID disabled_color_id);
 UINT _gxe_multi_line_text_view_text_id_set(GX_MULTI_LINE_TEXT_VIEW *text_view_ptr, GX_RESOURCE_ID text_id);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gxe_multi_line_text_view_text_set(GX_MULTI_LINE_TEXT_VIEW *view, GX_CONST GX_CHAR *text);
@@ -5470,11 +5470,11 @@ VOID _gx_rich_text_view_text_draw(GX_RICH_TEXT_VIEW *text_view);
 UINT _gxe_rich_text_view_fonts_set(GX_RICH_TEXT_VIEW *rich_view, GX_RICH_TEXT_FONTS *fonts);
 
 UINT _gxe_numeric_pixelmap_prompt_create(GX_NUMERIC_PIXELMAP_PROMPT *prompt,
-                                         GX_CONST GX_CHAR *name, GX_WIDGET *parent,
-                                         GX_RESOURCE_ID text_id, GX_RESOURCE_ID fill_id,
-                                         ULONG style, USHORT pixelmap_prompt_id,
-                                         GX_CONST GX_RECTANGLE *size,
-                                         UINT control_block_size);
+        GX_CONST GX_CHAR *name, GX_WIDGET *parent,
+        GX_RESOURCE_ID text_id, GX_RESOURCE_ID fill_id,
+        ULONG style, USHORT pixelmap_prompt_id,
+        GX_CONST GX_RECTANGLE *size,
+        UINT control_block_size);
 UINT _gxe_numeric_pixelmap_prompt_format_function_set(GX_NUMERIC_PIXELMAP_PROMPT *prompt, VOID (*format_func)(GX_NUMERIC_PIXELMAP_PROMPT *, INT));
 UINT _gxe_numeric_pixelmap_prompt_value_set(GX_NUMERIC_PIXELMAP_PROMPT *prompt, INT value);
 
@@ -5572,9 +5572,9 @@ UINT _gxe_radial_progress_bar_event_process(GX_RADIAL_PROGRESS_BAR *progress_bar
 UINT _gxe_radial_progress_bar_font_set(GX_RADIAL_PROGRESS_BAR *progress_bar, GX_RESOURCE_ID font_id);
 UINT _gxe_radial_progress_bar_info_set(GX_RADIAL_PROGRESS_BAR *bar, GX_RADIAL_PROGRESS_BAR_INFO *info);
 UINT _gxe_radial_progress_bar_text_color_set(GX_RADIAL_PROGRESS_BAR *progress_bar,
-                                             GX_RESOURCE_ID normal_text_color_id,
-                                             GX_RESOURCE_ID selected_text_color_id,
-                                             GX_RESOURCE_ID disabled_text_color_id);
+        GX_RESOURCE_ID normal_text_color_id,
+        GX_RESOURCE_ID selected_text_color_id,
+        GX_RESOURCE_ID disabled_text_color_id);
 VOID _gx_radial_progress_bar_text_draw(GX_RADIAL_PROGRESS_BAR *bar);
 UINT _gxe_radial_progress_bar_value_set(GX_RADIAL_PROGRESS_BAR *progress_bar, GX_VALUE new_value);
 
@@ -5627,7 +5627,7 @@ UINT _gxe_scroll_wheel_total_rows_set(GX_SCROLL_WHEEL *wheel, INT total_rows);
 UINT _gxe_single_line_text_input_backspace(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gxe_single_line_text_input_buffer_clear(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gxe_single_line_text_input_buffer_get(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr, GX_CHAR **buffer_address,
-                                            UINT *content_size, UINT *buffer_size);
+        UINT *content_size, UINT *buffer_size);
 UINT _gxe_single_line_text_input_character_delete(GX_SINGLE_LINE_TEXT_INPUT *text_input);
 UINT _gxe_single_line_text_input_character_insert(GX_SINGLE_LINE_TEXT_INPUT *text_input, GX_UBYTE *str, UINT str_size);
 UINT _gxe_single_line_text_input_create(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr,
@@ -5647,15 +5647,15 @@ UINT _gxe_single_line_text_input_style_add(GX_SINGLE_LINE_TEXT_INPUT *text_input
 UINT _gxe_single_line_text_input_style_remove(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr, ULONG style);
 UINT _gxe_single_line_text_input_style_set(GX_SINGLE_LINE_TEXT_INPUT *text_input_ptr, ULONG style);
 UINT _gxe_single_line_text_input_fill_color_set(GX_SINGLE_LINE_TEXT_INPUT *input,
-                                                GX_RESOURCE_ID normal_color_id,
-                                                GX_RESOURCE_ID selected_color_id,
-                                                GX_RESOURCE_ID disabled_color_id,
-                                                GX_RESOURCE_ID readonly_color_id);
+        GX_RESOURCE_ID normal_color_id,
+        GX_RESOURCE_ID selected_color_id,
+        GX_RESOURCE_ID disabled_color_id,
+        GX_RESOURCE_ID readonly_color_id);
 UINT _gxe_single_line_text_input_text_color_set(GX_SINGLE_LINE_TEXT_INPUT *input,
-                                                GX_RESOURCE_ID normal_color_id,
-                                                GX_RESOURCE_ID selected_color_id,
-                                                GX_RESOURCE_ID disabled_color_id,
-                                                GX_RESOURCE_ID readonly_color_id);
+        GX_RESOURCE_ID normal_color_id,
+        GX_RESOURCE_ID selected_color_id,
+        GX_RESOURCE_ID disabled_color_id,
+        GX_RESOURCE_ID readonly_color_id);
 UINT _gxe_single_line_text_input_text_select(GX_SINGLE_LINE_TEXT_INPUT *input, UINT start_index, UINT end_index);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gxe_single_line_text_input_text_set(GX_SINGLE_LINE_TEXT_INPUT *input, GX_CONST GX_CHAR *text);
@@ -5690,21 +5690,21 @@ UINT _gxe_string_scroll_wheel_create(GX_STRING_SCROLL_WHEEL *wheel, GX_CONST GX_
                                      UINT control_block_size);
 #endif
 UINT _gxe_string_scroll_wheel_create_ext(GX_STRING_SCROLL_WHEEL *wheel, GX_CONST GX_CHAR *name, GX_WIDGET *parent, INT total_rows,
-                                         GX_CONST GX_STRING *string_list,
-                                         ULONG style, USHORT Id, GX_CONST GX_RECTANGLE *size,
-                                         UINT control_block_size);
+        GX_CONST GX_STRING *string_list,
+        ULONG style, USHORT Id, GX_CONST GX_RECTANGLE *size,
+        UINT control_block_size);
 UINT _gxe_string_scroll_wheel_event_process(GX_STRING_SCROLL_WHEEL *wheel, GX_EVENT *event_ptr);
 UINT _gxe_string_scroll_wheel_string_id_list_set(GX_STRING_SCROLL_WHEEL *wheel,
-                                                 GX_CONST GX_RESOURCE_ID *string_id_list,
-                                                 INT id_count);
+        GX_CONST GX_RESOURCE_ID *string_id_list,
+        INT id_count);
 #if defined(GX_ENABLE_DEPRECATED_STRING_API)
 UINT _gxe_string_scroll_wheel_string_list_set(GX_STRING_SCROLL_WHEEL *wheel,
-                                              GX_CONST GX_CHAR **string_list,
-                                              INT string_count);
+        GX_CONST GX_CHAR **string_list,
+        INT string_count);
 #endif
 UINT _gxe_string_scroll_wheel_string_list_set_ext(GX_STRING_SCROLL_WHEEL *wheel,
-                                                  GX_CONST GX_STRING *string_list,
-                                                  INT string_count);
+        GX_CONST GX_STRING *string_list,
+        INT string_count);
 
 UINT _gxe_system_active_language_set(GX_UBYTE language);
 UINT _gxe_system_animation_get(GX_ANIMATION **animation);
@@ -5785,7 +5785,7 @@ UINT _gxe_text_scroll_wheel_callback_set(GX_TEXT_SCROLL_WHEEL * wheel, GX_CONST 
 UINT _gxe_text_scroll_wheel_callback_set_ext(GX_TEXT_SCROLL_WHEEL *wheel, UINT (*callback)(GX_TEXT_SCROLL_WHEEL *, INT, GX_STRING *));
 UINT _gxe_text_scroll_wheel_font_set(GX_TEXT_SCROLL_WHEEL *wheel, GX_RESOURCE_ID normal_font, GX_RESOURCE_ID selected_font);
 UINT _gxe_text_scroll_wheel_text_color_set(GX_TEXT_SCROLL_WHEEL *wheel, GX_RESOURCE_ID normal_text_color,
-                                           GX_RESOURCE_ID selected_text_color, GX_RESOURCE_ID disabled_text_color);
+        GX_RESOURCE_ID selected_text_color, GX_RESOURCE_ID disabled_text_color);
 UINT _gxe_text_scroll_wheel_create(GX_TEXT_SCROLL_WHEEL *wheel, GX_CONST GX_CHAR *name, GX_WIDGET *parent, INT value_count,
                                    ULONG style, USHORT Id, GX_CONST GX_RECTANGLE *size,
                                    UINT control_block_size);
@@ -5793,7 +5793,7 @@ UINT _gxe_text_scroll_wheel_event_process(GX_TEXT_SCROLL_WHEEL *wheel, GX_EVENT 
 VOID _gx_text_scroll_wheel_draw(GX_TEXT_SCROLL_WHEEL *wheel);
 
 UINT _gxe_tree_view_create(GX_TREE_VIEW *tree, GX_CONST GX_CHAR *name, GX_WIDGET *parent,
-    ULONG style, USHORT tree_id, GX_CONST GX_RECTANGLE *size, UINT control_block_size);
+                           ULONG style, USHORT tree_id, GX_CONST GX_RECTANGLE *size, UINT control_block_size);
 VOID _gx_tree_view_draw(GX_TREE_VIEW *tree);
 UINT _gxe_tree_view_event_process(GX_TREE_VIEW *tree, GX_EVENT *event_ptr);
 UINT _gxe_tree_view_indentation_set(GX_TREE_VIEW *tree, GX_VALUE indentation);

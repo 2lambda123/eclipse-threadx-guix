@@ -77,9 +77,9 @@
 /**************************************************************************/
 VOID _gx_vertical_list_scroll_info_get(GX_VERTICAL_LIST *list, ULONG style, GX_SCROLL_INFO *info)
 {
-INT        value;
-GX_VALUE   height;
-GX_WIDGET *child;
+    INT        value;
+    GX_VALUE   height;
+    GX_WIDGET *child;
 
     GX_PARAMETER_NOT_USED(style);
 

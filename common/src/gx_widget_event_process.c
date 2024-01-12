@@ -73,9 +73,9 @@
 static VOID  _gx_widget_children_show_event_process(GX_WIDGET *widget, GX_EVENT *event_ptr)
 {
 
-GX_WIDGET *child;
-GX_WIDGET *start = GX_NULL;
-GX_WIDGET *end = GX_NULL;
+    GX_WIDGET *child;
+    GX_WIDGET *start = GX_NULL;
+    GX_WIDGET *end = GX_NULL;
 
     /* Pickup the first child of the widget.  */
     child = widget -> gx_widget_first_child;
@@ -182,10 +182,10 @@ GX_WIDGET *end = GX_NULL;
 /**************************************************************************/
 UINT  _gx_widget_event_process(GX_WIDGET *widget, GX_EVENT *event_ptr)
 {
-GX_WIDGET *child;
-GX_EVENT   new_event;
-UINT       status = GX_SUCCESS;
-GX_EVENT   input_release_event;
+    GX_WIDGET *child;
+    GX_EVENT   new_event;
+    UINT       status = GX_SUCCESS;
+    GX_EVENT   input_release_event;
 
     /* Process relative to the type of event. */
     switch (event_ptr -> gx_event_type)
@@ -218,7 +218,7 @@ GX_EVENT   input_release_event;
     case GX_EVENT_FOCUS_GAINED:
         /* if I don't already have focus */
         if (!(widget -> gx_widget_status & GX_STATUS_HAS_FOCUS) &&
-            widget -> gx_widget_status & GX_STATUS_ACCEPTS_FOCUS)
+                widget -> gx_widget_status & GX_STATUS_ACCEPTS_FOCUS)
         {
             /* then status flag indicating I have focus */
 

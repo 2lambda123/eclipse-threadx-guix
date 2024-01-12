@@ -77,22 +77,22 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_rotated_compressed_glyph_8bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                              GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_DISPLAY          *display;
-GX_UBYTE            *glyph_data;
-INT                  row;
-INT                  col;
-INT                  start_x;
-GX_COLOR             text_color;
-GX_UBYTE             alpha;
-GX_UBYTE             count;
-GX_COMPRESSED_GLYPH *compressed_glyph;
-GX_RECTANGLE         rotated_draw_area;
-GX_POINT             rotated_map_offset;
-VOID                 (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
+    GX_DISPLAY          *display;
+    GX_UBYTE            *glyph_data;
+    INT                  row;
+    INT                  col;
+    INT                  start_x;
+    GX_COLOR             text_color;
+    GX_UBYTE             alpha;
+    GX_UBYTE             count;
+    GX_COMPRESSED_GLYPH *compressed_glyph;
+    GX_RECTANGLE         rotated_draw_area;
+    GX_POINT             rotated_map_offset;
+    VOID                 (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
 
-GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
+    GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
 
     if (brush_alpha == 0)
     {
@@ -114,7 +114,7 @@ GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alp
 
             rotated_map_offset.gx_point_x = map_offset -> gx_point_y;
             rotated_map_offset.gx_point_y = (GX_VALUE)(glyph -> gx_glyph_width - map_offset -> gx_point_x -
-                                                       (GX_VALUE)(draw_area -> gx_rectangle_right - draw_area -> gx_rectangle_left + 1));
+                                            (GX_VALUE)(draw_area -> gx_rectangle_right - draw_area -> gx_rectangle_left + 1));
         }
         else
         {
@@ -124,7 +124,7 @@ GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alp
             rotated_draw_area.gx_rectangle_bottom = draw_area -> gx_rectangle_right;
 
             rotated_map_offset.gx_point_x = (GX_VALUE)(glyph -> gx_glyph_height - map_offset -> gx_point_y -
-                                                       (GX_VALUE)(draw_area -> gx_rectangle_bottom - draw_area -> gx_rectangle_top + 1));
+                                            (GX_VALUE)(draw_area -> gx_rectangle_bottom - draw_area -> gx_rectangle_top + 1));
             rotated_map_offset.gx_point_y = map_offset -> gx_point_x;
         }
 
@@ -182,7 +182,7 @@ GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alp
                         {
 
                             if ((col <= rotated_draw_area.gx_rectangle_right) &&
-                                (col >= rotated_draw_area.gx_rectangle_left))
+                                    (col >= rotated_draw_area.gx_rectangle_left))
                             {
                                 blend_func(context,
                                            col,
@@ -210,7 +210,7 @@ GX_UBYTE             brush_alpha = context -> gx_draw_context_brush.gx_brush_alp
                         if (alpha > 0)
                         {
                             if (col <= rotated_draw_area.gx_rectangle_right &&
-                                col >= rotated_draw_area.gx_rectangle_left)
+                                    col >= rotated_draw_area.gx_rectangle_left)
                             {
                                 blend_func(context,
                                            col,

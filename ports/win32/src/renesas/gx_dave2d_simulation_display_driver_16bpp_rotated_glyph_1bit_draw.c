@@ -77,11 +77,11 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_16bpp_rotated_glyph_1bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                         GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_COMPRESSED_GLYPH rotated_glyph;
-GX_RECTANGLE        rotated_draw_area;
-GX_POINT            rotated_map_offset;
+    GX_COMPRESSED_GLYPH rotated_glyph;
+    GX_RECTANGLE        rotated_draw_area;
+    GX_POINT            rotated_map_offset;
 
     rotated_glyph = *((GX_COMPRESSED_GLYPH *)glyph);
 
@@ -96,7 +96,7 @@ GX_POINT            rotated_map_offset;
 
         rotated_map_offset.gx_point_x = map_offset -> gx_point_y;
         rotated_map_offset.gx_point_y = (GX_VALUE)(glyph -> gx_glyph_width - map_offset -> gx_point_x -
-                                                   (GX_VALUE)(draw_area -> gx_rectangle_right - draw_area -> gx_rectangle_left + 1));
+                                        (GX_VALUE)(draw_area -> gx_rectangle_right - draw_area -> gx_rectangle_left + 1));
     }
     else
     {
@@ -106,7 +106,7 @@ GX_POINT            rotated_map_offset;
         rotated_draw_area.gx_rectangle_bottom = draw_area -> gx_rectangle_right;
 
         rotated_map_offset.gx_point_x = (GX_VALUE)(glyph -> gx_glyph_height - map_offset -> gx_point_y -
-                                                   (GX_VALUE)(draw_area -> gx_rectangle_bottom - draw_area -> gx_rectangle_top + 1));
+                                        (GX_VALUE)(draw_area -> gx_rectangle_bottom - draw_area -> gx_rectangle_top + 1));
         rotated_map_offset.gx_point_y = map_offset -> gx_point_x;
     }
 

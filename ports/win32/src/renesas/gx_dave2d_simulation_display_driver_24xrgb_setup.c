@@ -66,8 +66,8 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_24xrgb_setup(GX_DISPLAY *display, VOID *aux_data,
-                                                        VOID (*toggle_function)(struct GX_CANVAS_STRUCT *canvas,
-                                                                                GX_RECTANGLE *dirty_area))
+        VOID (*toggle_function)(struct GX_CANVAS_STRUCT *canvas,
+                                GX_RECTANGLE *dirty_area))
 {
     _gx_display_driver_24xrgb_setup(display, aux_data, toggle_function);
 

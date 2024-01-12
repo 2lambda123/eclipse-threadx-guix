@@ -78,29 +78,29 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_rotated_glyph_4bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                   GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_DISPLAY *display;
-GX_UBYTE   *glyph_row;
-GX_UBYTE   *glyph_data;
-UINT        row;
-UINT        col;
-UINT        pixel_width = 0;
-UINT        leading_pixel;
-UINT        trailing_pixel;
-GX_COLOR    text_color;
-UINT        y_height;
-GX_UBYTE    alpha;
-UINT        pitch;
-UINT        index;
-VOID        (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
-GX_VALUE    rotated_map_offset_x;
-GX_VALUE    rotated_map_offset_y;
-GX_VALUE    rotated_left;
-GX_VALUE    rotated_top;
+    GX_DISPLAY *display;
+    GX_UBYTE   *glyph_row;
+    GX_UBYTE   *glyph_data;
+    UINT        row;
+    UINT        col;
+    UINT        pixel_width = 0;
+    UINT        leading_pixel;
+    UINT        trailing_pixel;
+    GX_COLOR    text_color;
+    UINT        y_height;
+    GX_UBYTE    alpha;
+    UINT        pitch;
+    UINT        index;
+    VOID        (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
+    GX_VALUE    rotated_map_offset_x;
+    GX_VALUE    rotated_map_offset_y;
+    GX_VALUE    rotated_left;
+    GX_VALUE    rotated_top;
 
 #if defined(GX_BRUSH_ALPHA_SUPPORT)
-GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
+    GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
     if (brush_alpha == 0)
     {
         return;

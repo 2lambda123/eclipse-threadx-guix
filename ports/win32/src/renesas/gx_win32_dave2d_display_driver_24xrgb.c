@@ -68,8 +68,8 @@
 /**************************************************************************/
 VOID win32_dave2d_simulation_24xrgb_bitmap_header_create(GX_DISPLAY *display)
 {
-GX_WIN32_DISPLAY_DRIVER_DATA *instance;
-DWORD                        *putmask;
+    GX_WIN32_DISPLAY_DRIVER_DATA *instance;
+    DWORD                        *putmask;
 
     instance = (GX_WIN32_DISPLAY_DRIVER_DATA *)display -> gx_display_driver_data;
 
@@ -140,7 +140,7 @@ DWORD                        *putmask;
 /**************************************************************************/
 UINT win32_dave2d_graphics_driver_setup_24xrgb(GX_DISPLAY *display)
 {
-GX_WIN32_DISPLAY_DRIVER_DATA *data;
+    GX_WIN32_DISPLAY_DRIVER_DATA *data;
 
     /* Initialize the low-level drawing function pointers.
 

@@ -73,15 +73,15 @@
 /*                                                                        */
 /**************************************************************************/
 static VOID _gx_dave2d_simulation_display_driver_565rgb_horizontal_pixelmap_line_compressed_write(GX_DRAW_CONTEXT *context,
-                                                                                                   INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
+        INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
 {
-INT                start_pos;
-INT                xval;
-GX_UBYTE           count;
-USHORT             pixel;
-GX_CONST GX_UBYTE *get;
-USHORT            *put;
-GX_PIXELMAP       *pixelmap;
+    INT                start_pos;
+    INT                xval;
+    GX_UBYTE           count;
+    USHORT             pixel;
+    GX_CONST GX_UBYTE *get;
+    USHORT            *put;
+    GX_PIXELMAP       *pixelmap;
 
     pixelmap = info -> pixelmap;
 
@@ -210,11 +210,11 @@ GX_PIXELMAP       *pixelmap;
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_565rgb_horizontal_pixelmap_line_draw(GX_DRAW_CONTEXT *context,
-                                                                                INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
+        INT xstart, INT xend, INT y, GX_FILL_PIXELMAP_INFO *info)
 {
-GX_BOOL      drawn = GX_FALSE;
-GX_BOOL      synergy_specific_format = GX_FALSE;
-GX_PIXELMAP *pixelmap = info -> pixelmap;
+    GX_BOOL      drawn = GX_FALSE;
+    GX_BOOL      synergy_specific_format = GX_FALSE;
+    GX_PIXELMAP *pixelmap = info -> pixelmap;
 
     if (pixelmap == GX_NULL)
     {

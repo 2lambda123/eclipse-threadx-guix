@@ -66,9 +66,9 @@
 /**************************************************************************/
 static void win32_dave2d_simulation_565rgb_rotated_bitmap_header_create(GX_DISPLAY *display)
 {
-DWORD                        *putmask;
+    DWORD                        *putmask;
 
-GX_WIN32_DISPLAY_DRIVER_DATA *instance = (GX_WIN32_DISPLAY_DRIVER_DATA *)display -> gx_display_driver_data;
+    GX_WIN32_DISPLAY_DRIVER_DATA *instance = (GX_WIN32_DISPLAY_DRIVER_DATA *)display -> gx_display_driver_data;
 
     instance -> win32_driver_bmpinfo.gx_bmp_header.biSize = sizeof(BITMAPINFOHEADER);
 
@@ -132,7 +132,7 @@ GX_WIN32_DISPLAY_DRIVER_DATA *instance = (GX_WIN32_DISPLAY_DRIVER_DATA *)display
 /**************************************************************************/
 UINT win32_dave2d_graphics_driver_setup_565rgb_rotated(GX_DISPLAY *display)
 {
-GX_WIN32_DISPLAY_DRIVER_DATA *data;
+    GX_WIN32_DISPLAY_DRIVER_DATA *data;
 
     /* Initialize the low-level drawing function pointers
 

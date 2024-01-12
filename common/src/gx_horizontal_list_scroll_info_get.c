@@ -77,17 +77,17 @@
 /**************************************************************************/
 VOID _gx_horizontal_list_scroll_info_get(GX_WINDOW *win, ULONG style, GX_SCROLL_INFO *info)
 {
-INT                 value;
-GX_WIDGET          *child;
-GX_HORIZONTAL_LIST *list = (GX_HORIZONTAL_LIST *)win;
-GX_VALUE            width;
+    INT                 value;
+    GX_WIDGET          *child;
+    GX_HORIZONTAL_LIST *list = (GX_HORIZONTAL_LIST *)win;
+    GX_VALUE            width;
 
 
     GX_PARAMETER_NOT_USED(style);
 
     if (list -> gx_horizontal_list_callback)
     {
-    	/* If list callback is set, children winthin the list should share the same width. */
+        /* If list callback is set, children winthin the list should share the same width. */
         info -> gx_scroll_maximum = (list -> gx_horizontal_list_total_columns * list -> gx_horizontal_list_child_width - 1);
     }
     else

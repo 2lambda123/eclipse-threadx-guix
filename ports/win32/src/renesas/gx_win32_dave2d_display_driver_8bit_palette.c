@@ -72,7 +72,7 @@
 /**************************************************************************/
 UINT win32_dave2d_graphics_driver_setup_8bit_palette(GX_DISPLAY *display)
 {
-GX_WIN32_DISPLAY_DRIVER_DATA *data;
+    GX_WIN32_DISPLAY_DRIVER_DATA *data;
 
     /* Initialize the low-level drawing function pointers.
        For windows, these are always just the generic funcions,

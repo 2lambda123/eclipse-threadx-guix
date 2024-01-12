@@ -77,22 +77,22 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_compressed_glyph_4bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                      GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_DISPLAY          *display;
-GX_UBYTE            *glyph_data;
-INT                  row;
-INT                  col;
-INT                  start_x;
-GX_COLOR             text_color;
-GX_UBYTE             alpha1;
-GX_UBYTE             alpha2;
-GX_UBYTE             count;
-GX_COMPRESSED_GLYPH *compressed_glyph;
-VOID                 (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
+    GX_DISPLAY          *display;
+    GX_UBYTE            *glyph_data;
+    INT                  row;
+    INT                  col;
+    INT                  start_x;
+    GX_COLOR             text_color;
+    GX_UBYTE             alpha1;
+    GX_UBYTE             alpha2;
+    GX_UBYTE             count;
+    GX_COMPRESSED_GLYPH *compressed_glyph;
+    VOID                 (*blend_func)(GX_DRAW_CONTEXT *context, INT x, INT y, GX_COLOR color, GX_UBYTE alpha);
 
 #if defined(GX_BRUSH_ALPHA_SUPPORT)
-GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
+    GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
     if (brush_alpha == 0)
     {
         return;
@@ -165,7 +165,7 @@ GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
                         if (alpha1 > 0)
                         {
                             if ((col <= draw_area -> gx_rectangle_right) &&
-                                (col >= draw_area -> gx_rectangle_left))
+                                    (col >= draw_area -> gx_rectangle_left))
                             {
                                 blend_func(context,
                                            col,
@@ -179,7 +179,7 @@ GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
                         if (alpha2 > 0)
                         {
                             if ((col <= draw_area -> gx_rectangle_right) &&
-                                (col >= draw_area -> gx_rectangle_left))
+                                    (col >= draw_area -> gx_rectangle_left))
                             {
                                 blend_func(context,
                                            col,
@@ -203,7 +203,7 @@ GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
                         if (alpha1 > 0)
                         {
                             if ((col <= draw_area -> gx_rectangle_right) &&
-                                (col >= draw_area -> gx_rectangle_left))
+                                    (col >= draw_area -> gx_rectangle_left))
                             {
                                 Extend_alpha_4bit(alpha1)
 #if defined(GX_BRUSH_ALPHA_SUPPORT)
@@ -221,7 +221,7 @@ GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
                         if (alpha2 > 0)
                         {
                             if ((col <= draw_area -> gx_rectangle_right) &&
-                                (col >= draw_area -> gx_rectangle_left))
+                                    (col >= draw_area -> gx_rectangle_left))
                             {
                                 Extend_alpha_4bit(alpha2)
 #if defined(GX_BRUSH_ALPHA_SUPPORT)

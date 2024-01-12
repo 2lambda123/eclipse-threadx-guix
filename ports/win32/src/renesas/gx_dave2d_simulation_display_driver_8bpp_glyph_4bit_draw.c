@@ -75,21 +75,21 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_8bpp_glyph_4bit_draw(GX_DRAW_CONTEXT *context,
-                                                                GX_RECTANGLE *draw_area, GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_RECTANGLE *draw_area, GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_UBYTE *glyph_row;
-GX_UBYTE *glyph_data;
-UINT      row;
-UINT      pixel_width = 0;
-UINT      leading_pixel;
-UINT      trailing_pixel;
-GX_UBYTE  text_color;
-UINT      y_height;
-GX_UBYTE  alpha;
-UINT      pitch;
-UINT      index;
-GX_UBYTE *put;
-GX_UBYTE *draw_start;
+    GX_UBYTE *glyph_row;
+    GX_UBYTE *glyph_data;
+    UINT      row;
+    UINT      pixel_width = 0;
+    UINT      leading_pixel;
+    UINT      trailing_pixel;
+    GX_UBYTE  text_color;
+    UINT      y_height;
+    GX_UBYTE  alpha;
+    UINT      pitch;
+    UINT      index;
+    GX_UBYTE *put;
+    GX_UBYTE *draw_start;
 
     draw_start = (GX_UBYTE *)context -> gx_draw_context_memory;
     draw_start += context -> gx_draw_context_pitch * draw_area -> gx_rectangle_top;

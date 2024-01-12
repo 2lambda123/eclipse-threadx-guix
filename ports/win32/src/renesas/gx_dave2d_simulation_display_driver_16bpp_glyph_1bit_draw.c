@@ -91,30 +91,30 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_16bpp_glyph_1bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                 GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_UBYTE *glyph_row;
-GX_UBYTE *glyph_data;
-UINT      row;
-UINT      pixel_per_row;
-UINT      pixel_in_first_byte;
-UINT      pixel_in_last_byte;
-USHORT    text_color;
-UINT      y_height;
-GX_UBYTE  alpha;
-UINT      glyph_width;
-USHORT   *put;
-UINT      num_bytes;
-UINT      num_bits;
-USHORT   *line_start;
-GX_UBYTE  mask;
-GX_UBYTE  init_mask;
-UINT      i;
+    GX_UBYTE *glyph_row;
+    GX_UBYTE *glyph_data;
+    UINT      row;
+    UINT      pixel_per_row;
+    UINT      pixel_in_first_byte;
+    UINT      pixel_in_last_byte;
+    USHORT    text_color;
+    UINT      y_height;
+    GX_UBYTE  alpha;
+    UINT      glyph_width;
+    USHORT   *put;
+    UINT      num_bytes;
+    UINT      num_bits;
+    USHORT   *line_start;
+    GX_UBYTE  mask;
+    GX_UBYTE  init_mask;
+    UINT      i;
 
 #if defined(GX_BRUSH_ALPHA_SUPPORT)
-GX_UBYTE brush_alpha;
-INT      xval, yval;
-VOID     (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
+    GX_UBYTE brush_alpha;
+    INT      xval, yval;
+    VOID     (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
 
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
     if (brush_alpha == 0)
@@ -201,25 +201,25 @@ VOID     (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
                 {
                 case 8:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 7:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 6:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 5:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 4:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 3:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 2:
                     BLEND_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 1:
                     if (alpha & mask)
                     {
@@ -259,25 +259,25 @@ VOID     (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
                 {
                 case 8:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 7:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 6:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 5:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 4:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 3:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 2:
                     DRAW_PIXEL;
-                    /* fallthrough */
+                /* fallthrough */
                 case 1:
                     if (alpha & mask)
                     {

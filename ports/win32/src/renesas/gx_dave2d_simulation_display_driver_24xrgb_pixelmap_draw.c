@@ -70,18 +70,18 @@
 /*                                                                        */
 /**************************************************************************/
 static VOID _gx_dave2d_simulation_display_driver_24xrgb_pixelmap_compressed_write(GX_DRAW_CONTEXT *context,
-                                                                                   INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
+        INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
 {
-INT             yval;
-INT             xval;
-GX_CONST UCHAR *get;
-UCHAR           count;
-ULONG           pixel;
-UCHAR           alpha_value;
-GX_BOOL         has_alpha;
-GX_UBYTE        brush_alpha;
+    INT             yval;
+    INT             xval;
+    GX_CONST UCHAR *get;
+    UCHAR           count;
+    ULONG           pixel;
+    UCHAR           alpha_value;
+    GX_BOOL         has_alpha;
+    GX_UBYTE        brush_alpha;
 
-GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
+    GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
 
     get = (GX_CONST UCHAR *)pixelmap -> gx_pixelmap_data;
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
@@ -146,7 +146,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
                             _gx_display_driver_24xrgb_pixel_blend(context, xval, yval, pixel, alpha_value);
                         }
@@ -159,7 +159,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
                             if (brush_alpha != 0xff)
                             {
@@ -181,7 +181,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                 while (count--)
                 {
                     if (xval >= clip -> gx_rectangle_left &&
-                        xval <= clip -> gx_rectangle_right)
+                            xval <= clip -> gx_rectangle_right)
                     {
                         pixel = (ULONG)((*(get)) | ((*(get + 1)) << 8) | ((*(get + 2)) << 16));
                         if (has_alpha)
@@ -257,18 +257,18 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
 /*                                                                        */
 /**************************************************************************/
 static VOID _gx_dave2d_simulation_display_driver_32bpp_4444argb_pixelmap_compressed_alpha_write(GX_DRAW_CONTEXT *context,
-                                                                                                 INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
+        INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
 {
-INT             yval;
-INT             xval;
-GX_CONST UCHAR *get;
-UCHAR           count;
-GX_COLOR        pixel;
-UCHAR           alpha_value;
-UCHAR           temp;
-GX_UBYTE        brush_alpha;
+    INT             yval;
+    INT             xval;
+    GX_CONST UCHAR *get;
+    UCHAR           count;
+    GX_COLOR        pixel;
+    UCHAR           alpha_value;
+    UCHAR           temp;
+    GX_UBYTE        brush_alpha;
 
-GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
+    GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
 
     get = (GX_CONST UCHAR *)pixelmap -> gx_pixelmap_data;
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
@@ -330,7 +330,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
                             _gx_display_driver_24xrgb_pixel_blend(context, xval, yval, pixel, alpha_value);
                         }
@@ -353,7 +353,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                 while (count--)
                 {
                     if (xval >= clip -> gx_rectangle_left &&
-                        xval <= clip -> gx_rectangle_right)
+                            xval <= clip -> gx_rectangle_right)
                     {
                         /*second byte , 0xf0 --> a , 0x0f --> r */
                         temp  = (*(get + 1)) & 0xf0;
@@ -427,18 +427,18 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
 /*                                                                        */
 /**************************************************************************/
 static VOID _gx_dave2d_simulation_display_driver_32bpp_4444bgra_pixelmap_compressed_write(GX_DRAW_CONTEXT *context,
-                                                                                           INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
+        INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
 {
-INT             yval;
-INT             xval;
-GX_CONST UCHAR *get;
-UCHAR           count;
-GX_COLOR        pixel;
-UCHAR           alpha_value;
-UCHAR           temp;
-GX_UBYTE        brush_alpha;
+    INT             yval;
+    INT             xval;
+    GX_CONST UCHAR *get;
+    UCHAR           count;
+    GX_COLOR        pixel;
+    UCHAR           alpha_value;
+    UCHAR           temp;
+    GX_UBYTE        brush_alpha;
 
-GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
+    GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
 
     get = (GX_CONST UCHAR *)pixelmap -> gx_pixelmap_data;
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
@@ -499,7 +499,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
                             _gx_display_driver_24xrgb_pixel_blend(context, xval, yval, pixel, alpha_value);
                         }
@@ -522,7 +522,7 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
                 while (count--)
                 {
                     if (xval >= clip -> gx_rectangle_left &&
-                        xval <= clip -> gx_rectangle_right)
+                            xval <= clip -> gx_rectangle_right)
                     {
                         pixel = 0;
                         /*first byte , 0xf0 --> g , 0x0f --> b */
@@ -596,19 +596,19 @@ GX_RECTANGLE   *clip = context -> gx_draw_context_clip;
 /*                                                                        */
 /**************************************************************************/
 static VOID _gx_dave2d_simulation_display_driver_24xrgb_565rgb_pixelmap_compressed_write(GX_DRAW_CONTEXT *context,
-                                                                                          INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
+        INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
 {
-INT                yval;
-INT                xval;
-GX_CONST GX_UBYTE *get;
-GX_COLOR          *put;
-GX_COLOR          *putrow;
-UCHAR              count;
-USHORT             pixel;
-GX_COLOR           pixel_24;
-GX_UBYTE           brush_alpha;
+    INT                yval;
+    INT                xval;
+    GX_CONST GX_UBYTE *get;
+    GX_COLOR          *put;
+    GX_COLOR          *putrow;
+    UCHAR              count;
+    USHORT             pixel;
+    GX_COLOR           pixel_24;
+    GX_UBYTE           brush_alpha;
 
-GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
+    GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
 
     get = (GX_CONST UCHAR *)pixelmap -> gx_pixelmap_data;
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
@@ -669,7 +669,7 @@ GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
                             *put = pixel_24;
                         }
@@ -682,7 +682,7 @@ GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
                             _gx_display_driver_24xrgb_pixel_blend(context, xval, yval, pixel_24, brush_alpha);
                         }
@@ -699,7 +699,7 @@ GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
 
                             pixel = *get;
@@ -719,7 +719,7 @@ GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
                     while (count--)
                     {
                         if (xval >= clip -> gx_rectangle_left &&
-                            xval <= clip -> gx_rectangle_right)
+                                xval <= clip -> gx_rectangle_right)
                         {
 
                             pixel = *get;
@@ -792,11 +792,11 @@ GX_RECTANGLE      *clip = context -> gx_draw_context_clip;
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_24xrgb_pixelmap_draw(GX_DRAW_CONTEXT *context,
-                                                                INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
+        INT xpos, INT ypos, GX_PIXELMAP *pixelmap)
 {
-GX_BOOL  synergy_specific_format = GX_FALSE;
-GX_BOOL  drawn = GX_FALSE;
-GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
+    GX_BOOL  synergy_specific_format = GX_FALSE;
+    GX_BOOL  drawn = GX_FALSE;
+    GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
 
     if (brush_alpha == 0)
     {
@@ -804,7 +804,7 @@ GX_UBYTE brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
     }
 
     if (pixelmap -> gx_pixelmap_flags & GX_PIXELMAP_TARGA  &&
-        pixelmap -> gx_pixelmap_format != GX_COLOR_FORMAT_8BIT_PALETTE)
+            pixelmap -> gx_pixelmap_format != GX_COLOR_FORMAT_8BIT_PALETTE)
     {
         synergy_specific_format = GX_TRUE;
     }

@@ -71,11 +71,11 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_24xrgb_rotated_pixelmap_blend(GX_DRAW_CONTEXT *context,
-                                                                         INT xpos, INT ypos, GX_PIXELMAP *pixelmap, GX_UBYTE alpha)
+        INT xpos, INT ypos, GX_PIXELMAP *pixelmap, GX_UBYTE alpha)
 {
-GX_RECTANGLE *clip = context -> gx_draw_context_clip;
-GX_RECTANGLE  rotated_clip;
-GX_PIXELMAP   temp_map = *pixelmap;
+    GX_RECTANGLE *clip = context -> gx_draw_context_clip;
+    GX_RECTANGLE  rotated_clip;
+    GX_PIXELMAP   temp_map = *pixelmap;
 
     GX_SWAP_VALS(xpos, ypos);
 

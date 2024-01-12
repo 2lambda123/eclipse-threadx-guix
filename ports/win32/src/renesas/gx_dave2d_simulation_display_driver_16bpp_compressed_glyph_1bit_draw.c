@@ -83,22 +83,22 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_16bpp_compressed_glyph_1bit_draw(GX_DRAW_CONTEXT *context, GX_RECTANGLE *draw_area,
-                                                                            GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
+        GX_POINT *map_offset, GX_CONST GX_GLYPH *glyph)
 {
-GX_UBYTE            *glyph_data;
-INT                  row;
-INT                  col;
-INT                  start_x;
-USHORT               text_color;
-GX_UBYTE             alpha_value;
-GX_UBYTE             alpha;
-GX_UBYTE             mask;
-GX_UBYTE             count;
-GX_UBYTE             index;
-GX_COMPRESSED_GLYPH *compressed_glyph;
+    GX_UBYTE            *glyph_data;
+    INT                  row;
+    INT                  col;
+    INT                  start_x;
+    USHORT               text_color;
+    GX_UBYTE             alpha_value;
+    GX_UBYTE             alpha;
+    GX_UBYTE             mask;
+    GX_UBYTE             count;
+    GX_UBYTE             index;
+    GX_COMPRESSED_GLYPH *compressed_glyph;
 
-GX_UBYTE             brush_alpha;
-VOID                 (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
+    GX_UBYTE             brush_alpha;
+    VOID                 (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBYTE);
 
     brush_alpha = context -> gx_draw_context_brush.gx_brush_alpha;
     if (brush_alpha == 0)
@@ -171,7 +171,7 @@ VOID                 (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBY
                                 if (alpha != 0)
                                 {
                                     if ((col <= draw_area -> gx_rectangle_right) &&
-                                        (col >= draw_area -> gx_rectangle_left))
+                                            (col >= draw_area -> gx_rectangle_left))
                                     {
                                         blend_func(context, col, row, text_color, brush_alpha);
                                     }
@@ -201,7 +201,7 @@ VOID                 (*blend_func)(GX_DRAW_CONTEXT *, INT, INT, GX_COLOR, GX_UBY
                                 if (alpha != 0)
                                 {
                                     if ((col <= draw_area -> gx_rectangle_right) &&
-                                        (col >= draw_area -> gx_rectangle_left))
+                                            (col >= draw_area -> gx_rectangle_left))
                                     {
                                         blend_func(context, col, row, text_color, brush_alpha);
                                     }

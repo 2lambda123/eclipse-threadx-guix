@@ -76,13 +76,13 @@
 /*                                                                        */
 /**************************************************************************/
 VOID _gx_dave2d_simulation_display_driver_32bpp_rotated_horizontal_pixelmap_line_draw(GX_DRAW_CONTEXT *context,
-                                                                                       INT ystart, INT yend, INT x, GX_FILL_PIXELMAP_INFO *info)
+        INT ystart, INT yend, INT x, GX_FILL_PIXELMAP_INFO *info)
 {
-INT          xstart;
-INT          xend;
-INT          y;
-GX_PIXELMAP *old_map = info -> pixelmap;
-GX_PIXELMAP  map = *old_map;
+    INT          xstart;
+    INT          xend;
+    INT          y;
+    GX_PIXELMAP *old_map = info -> pixelmap;
+    GX_PIXELMAP  map = *old_map;
 
     info -> pixelmap = &map;
     GX_SWAP_VALS(map.gx_pixelmap_height, map.gx_pixelmap_width);
