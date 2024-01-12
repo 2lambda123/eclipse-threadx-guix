@@ -1,4 +1,5 @@
 import os
+import new_test
 import sys
 import argparse
 import logging
@@ -14,8 +15,9 @@ from os.path import basename
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '\\..\\test_view')
 import test_utils
+import new_test
 
-#count[total, passed, failed]
+# Count[total, passed, failed]
 count_test=[0,0,0]
 count_generate=[0, 0, 0]
 
