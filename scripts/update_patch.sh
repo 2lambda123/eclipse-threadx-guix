@@ -6,7 +6,7 @@ if [ "$#" -ne 2 ]; then
 fi
 
 # Change the current working directory to the parent directory of this script.
-cd $(dirname $(realpath "$0"))/.. || exit
+cd "$(dirname "$(realpath "$0")")"/.. || exit
 current_version="6\\.x"
 source_dirs="common ports"
 file_list=$(find "$source_dirs" -type f -name '*.[ch]' -print)
@@ -18,5 +18,5 @@ sed -i "s/xx\/xx\/xxxx/${2:0:2}\/${2:3:2}\/${2:6:4}/g" readme/*
 
 # Update version in port files
 source_dirs="ports"
-file_list=$(find $source_dirs -type f -name "*.h" -print)
+file_list=$(find "$source_dirs" -type f -name "*.h" -print)
 sed -i "/\"Copyright/,/[0-9]\.[0-9]/s/[0-9]\.[0-9\.]\+/$1/" "$file_list"
