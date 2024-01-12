@@ -17,6 +17,7 @@ from test_copy_paste_multi import run_copy_paste_multi_tests
 from test_font import run_font_tests
 from test_multi_themes import run_multi_themes_tests
 from test_scroll_wheel_widget import run_scroll_wheel_widget_tests
+import new_test
 from test_menu_widget import run_menu_widget_tests
 from test_project_import import run_project_import_tests
 from test_trigger_edit import run_trigger_edit_tests
