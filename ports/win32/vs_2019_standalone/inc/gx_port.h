@@ -9,7 +9,6 @@
 /*                                                                        */
 /**************************************************************************/
 
-
 /**************************************************************************/
 /**************************************************************************/
 /**                                                                       */
@@ -62,32 +61,30 @@
 #include "gx_user.h"
 #endif
 
-typedef INT    GX_BOOL;
+typedef INT GX_BOOL;
 
-typedef SHORT  GX_VALUE;
+typedef SHORT GX_VALUE;
 
-#define GX_VALUE_MAX                        0x7FFF
+#define GX_VALUE_MAX 0x7FFF
 
 /* For the win32 port, the entry point is WinMain, which is defined
    in the win32 driver file.  The entry point for GUIX demo is gx_main(). */
 
-#define main(a, b)                          gx_main(a, b)
+#define main(a, b) gx_main(a, b)
 
 #define GX_WIDGET_USER_DATA
 
 /* Define the basic system parameters.  */
 
-
-#define GX_CONST                            const
+#define GX_CONST const
 
 #define GX_INCLUDE_DEFAULT_COLORS
 
-#define GX_MAX_ACTIVE_TIMERS                32
+#define GX_MAX_ACTIVE_TIMERS 32
 
-#define GX_MAX_VIEWS                        32
+#define GX_MAX_VIEWS 32
 
-#define GX_MAX_DISPLAY_HEIGHT               800
-
+#define GX_MAX_DISPLAY_HEIGHT 800
 
 #define GX_CALLER_CHECKING_EXTERNS
 #define GX_THREADS_ONLY_CALLER_CHECKING
@@ -95,15 +92,14 @@ typedef SHORT  GX_VALUE;
 #define GX_NOT_ISR_CALLER_CHECKING
 #define GX_THREAD_WAIT_CALLER_CHECKING
 
-
 /* Define the version ID of GUIX.  This may be utilized by the application.  */
 
 #ifdef GX_SYSTEM_INIT
 CHAR _gx_version_id[] =
-    "Copyright (c) Microsoft Corporation. All rights reserved.  *  GUIX Win32/Standalone/Visual Version 6.4.0 *";
+    "Copyright (c) Microsoft Corporation. All rights reserved.  *  GUIX "
+    "Win32/Standalone/Visual Version 6.4.0 *";
 #else
-extern  CHAR _gx_version_id[];
+extern CHAR _gx_version_id[];
 #endif
 
 #endif
-

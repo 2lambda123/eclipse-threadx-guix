@@ -9,7 +9,6 @@
 /*                                                                        */
 /**************************************************************************/
 
-
 /**************************************************************************/
 /**************************************************************************/
 /**                                                                       */
@@ -21,14 +20,13 @@
 
 #define GX_SOURCE_CODE
 
-
 /* Include necessary system files.  */
 
 #include "gx_api.h"
+#include "gx_scrollbar.h"
+#include "gx_system.h"
 #include "gx_widget.h"
 #include "gx_window.h"
-#include "gx_system.h"
-#include "gx_scrollbar.h"
 
 /**************************************************************************/
 /*                                                                        */
@@ -75,69 +73,63 @@
 /*                                            resulting in version 6.4.0  */
 /*                                                                        */
 /**************************************************************************/
-VOID _gx_horizontal_list_scroll_info_get(GX_WINDOW *win, ULONG style, GX_SCROLL_INFO *info)
-{
-    INT                 value;
-    GX_WIDGET          *child;
-    GX_HORIZONTAL_LIST *list = (GX_HORIZONTAL_LIST *)win;
-    GX_VALUE            width;
+VOID _gx_horizontal_list_scroll_info_get(GX_WINDOW *win, ULONG style,
+                                         GX_SCROLL_INFO *info) {
+  INT value;
+  GX_WIDGET *child;
+  GX_HORIZONTAL_LIST *list = (GX_HORIZONTAL_LIST *)win;
+  GX_VALUE width;
 
+  GX_PARAMETER_NOT_USED(style);
 
-    GX_PARAMETER_NOT_USED(style);
+  if (list->gx_horizontal_list_callback) {
+    /* If list callback is set, children winthin the list should share the same
+     * width. */
+    info->gx_scroll_maximum = (list->gx_horizontal_list_total_columns *
+                                   list->gx_horizontal_list_child_width -
+                               1);
+  } else {
+    info->gx_scroll_maximum = 0;
 
-    if (list -> gx_horizontal_list_callback)
-    {
-        /* If list callback is set, children winthin the list should share the same width. */
-        info -> gx_scroll_maximum = (list -> gx_horizontal_list_total_columns * list -> gx_horizontal_list_child_width - 1);
+    child = _gx_widget_first_client_child_get((GX_WIDGET *)list);
+    while (child) {
+      _gx_widget_width_get(child, &width);
+      info->gx_scroll_maximum += width;
+      child = _gx_widget_next_client_child_get(child);
     }
-    else
-    {
-        info -> gx_scroll_maximum = 0;
+  }
+  info->gx_scroll_minimum = 0;
+  info->gx_scroll_visible =
+      (GX_VALUE)(list->gx_window_client.gx_rectangle_right -
+                 list->gx_window_client.gx_rectangle_left + 1);
 
-        child = _gx_widget_first_client_child_get((GX_WIDGET*)list);
-        while (child)
-        {
-            _gx_widget_width_get(child, &width);
-            info -> gx_scroll_maximum += width;
-            child = _gx_widget_next_client_child_get(child);
-        }
+  if (info->gx_scroll_maximum <= info->gx_scroll_visible) {
+    info->gx_scroll_value = 0;
+    info->gx_scroll_increment = 0;
+    info->gx_scroll_maximum = info->gx_scroll_visible;
+    return;
+  }
+
+  value =
+      list->gx_horizontal_list_top_index * list->gx_horizontal_list_child_width;
+
+  if (list->gx_horizontal_list_top_index >= 0) {
+    child = _gx_widget_first_client_child_get((GX_WIDGET *)win);
+
+    if (child) {
+      value += win->gx_window_client.gx_rectangle_left -
+               child->gx_widget_size.gx_rectangle_left;
     }
-    info -> gx_scroll_minimum = 0;
-    info -> gx_scroll_visible = (GX_VALUE)(list -> gx_window_client.gx_rectangle_right - list -> gx_window_client.gx_rectangle_left + 1);
+  }
 
-    if (info -> gx_scroll_maximum <= info -> gx_scroll_visible)
-    {
-        info -> gx_scroll_value = 0;
-        info -> gx_scroll_increment = 0;
-        info -> gx_scroll_maximum = info -> gx_scroll_visible;
-        return;
+  if (value < info->gx_scroll_minimum) {
+    value = info->gx_scroll_minimum;
+  } else {
+    if (value > info->gx_scroll_maximum - info->gx_scroll_visible + 1) {
+      value = info->gx_scroll_maximum - info->gx_scroll_visible + 1;
     }
+  }
 
-    value = list -> gx_horizontal_list_top_index * list -> gx_horizontal_list_child_width;
-
-    if (list -> gx_horizontal_list_top_index >= 0)
-    {
-        child = _gx_widget_first_client_child_get((GX_WIDGET *)win);
-
-        if (child)
-        {
-            value += win -> gx_window_client.gx_rectangle_left - child -> gx_widget_size.gx_rectangle_left;
-        }
-    }
-
-    if (value < info -> gx_scroll_minimum)
-    {
-        value = info -> gx_scroll_minimum;
-    }
-    else
-    {
-        if (value > info -> gx_scroll_maximum - info -> gx_scroll_visible + 1)
-        {
-            value = info -> gx_scroll_maximum - info -> gx_scroll_visible + 1;
-        }
-    }
-
-    info -> gx_scroll_value = value;
-    info -> gx_scroll_increment = list -> gx_horizontal_list_child_width / 2;
+  info->gx_scroll_value = value;
+  info->gx_scroll_increment = list->gx_horizontal_list_child_width / 2;
 }
-

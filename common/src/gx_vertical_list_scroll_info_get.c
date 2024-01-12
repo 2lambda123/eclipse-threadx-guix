@@ -9,7 +9,6 @@
 /*                                                                        */
 /**************************************************************************/
 
-
 /**************************************************************************/
 /**************************************************************************/
 /**                                                                       */
@@ -21,14 +20,13 @@
 
 #define GX_SOURCE_CODE
 
-
 /* Include necessary system files.  */
 
 #include "gx_api.h"
+#include "gx_scrollbar.h"
+#include "gx_system.h"
 #include "gx_widget.h"
 #include "gx_window.h"
-#include "gx_system.h"
-#include "gx_scrollbar.h"
 
 /**************************************************************************/
 /*                                                                        */
@@ -75,70 +73,65 @@
 /*                                            resulting in version 6.4.0  */
 /*                                                                        */
 /**************************************************************************/
-VOID _gx_vertical_list_scroll_info_get(GX_VERTICAL_LIST *list, ULONG style, GX_SCROLL_INFO *info)
-{
-    INT        value;
-    GX_VALUE   height;
-    GX_WIDGET *child;
+VOID _gx_vertical_list_scroll_info_get(GX_VERTICAL_LIST *list, ULONG style,
+                                       GX_SCROLL_INFO *info) {
+  INT value;
+  GX_VALUE height;
+  GX_WIDGET *child;
 
-    GX_PARAMETER_NOT_USED(style);
+  GX_PARAMETER_NOT_USED(style);
 
-    if (list -> gx_vertical_list_callback)
-    {
-        /* If list callback is set, children winthin the list should share the same height. */
-        info -> gx_scroll_maximum = (list->gx_vertical_list_total_rows * list -> gx_vertical_list_child_height - 1);
+  if (list->gx_vertical_list_callback) {
+    /* If list callback is set, children winthin the list should share the same
+     * height. */
+    info->gx_scroll_maximum = (list->gx_vertical_list_total_rows *
+                                   list->gx_vertical_list_child_height -
+                               1);
+  } else {
+    info->gx_scroll_maximum = 0;
+
+    child = _gx_widget_first_client_child_get((GX_WIDGET *)list);
+
+    while (child) {
+      _gx_widget_height_get(child, &height);
+
+      info->gx_scroll_maximum += height;
+
+      child = _gx_widget_next_client_child_get(child);
     }
-    else
-    {
-        info -> gx_scroll_maximum = 0;
+  }
+  info->gx_scroll_minimum = 0;
+  info->gx_scroll_visible =
+      (GX_VALUE)(list->gx_window_client.gx_rectangle_bottom -
+                 list->gx_window_client.gx_rectangle_top + 1);
 
-        child = _gx_widget_first_client_child_get((GX_WIDGET *)list);
+  if (info->gx_scroll_maximum <= info->gx_scroll_visible) {
+    info->gx_scroll_value = 0;
+    info->gx_scroll_increment = 0;
+    info->gx_scroll_maximum = info->gx_scroll_visible;
+    return;
+  }
 
-        while (child)
-        {
-            _gx_widget_height_get(child, &height);
+  value =
+      list->gx_vertical_list_top_index * list->gx_vertical_list_child_height;
 
-            info -> gx_scroll_maximum += height;
+  if (list->gx_vertical_list_top_index >= 0) {
+    child = _gx_widget_first_client_child_get((GX_WIDGET *)list);
 
-            child = _gx_widget_next_client_child_get(child);
-        }
+    if (child) {
+      value += list->gx_window_client.gx_rectangle_top -
+               child->gx_widget_size.gx_rectangle_top;
     }
-    info -> gx_scroll_minimum = 0;
-    info -> gx_scroll_visible = (GX_VALUE)(list -> gx_window_client.gx_rectangle_bottom - list -> gx_window_client.gx_rectangle_top + 1);
+  }
 
-    if (info -> gx_scroll_maximum <= info -> gx_scroll_visible)
-    {
-        info -> gx_scroll_value = 0;
-        info -> gx_scroll_increment = 0;
-        info -> gx_scroll_maximum = info->gx_scroll_visible;
-        return;
+  if (value < info->gx_scroll_minimum) {
+    value = info->gx_scroll_minimum;
+  } else {
+    if (value > info->gx_scroll_maximum - info->gx_scroll_visible + 1) {
+      value = info->gx_scroll_maximum - info->gx_scroll_visible + 1;
     }
+  }
 
-    value = list -> gx_vertical_list_top_index * list -> gx_vertical_list_child_height;
-
-    if (list -> gx_vertical_list_top_index >= 0)
-    {
-        child = _gx_widget_first_client_child_get((GX_WIDGET *)list);
-
-        if (child)
-        {
-            value += list -> gx_window_client.gx_rectangle_top - child -> gx_widget_size.gx_rectangle_top;
-        }
-    }
-
-    if (value < info -> gx_scroll_minimum)
-    {
-        value = info -> gx_scroll_minimum;
-    }
-    else
-    {
-        if (value > info -> gx_scroll_maximum - info -> gx_scroll_visible + 1)
-        {
-            value = info -> gx_scroll_maximum - info -> gx_scroll_visible + 1;
-        }
-    }
-
-    info -> gx_scroll_value = value;
-    info -> gx_scroll_increment = list -> gx_vertical_list_child_height / 2;
+  info->gx_scroll_value = value;
+  info->gx_scroll_increment = list->gx_vertical_list_child_height / 2;
 }
-
