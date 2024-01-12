@@ -585,7 +585,7 @@ set(all_widgets_8bpp_rotated_ccw_FILE_LIST
     scroll_wheel_screen.c
     shapes_screen.c)
 
-set(all_widgets_8bpp_rotated_ccw_REG_TESTS
+set(all_widgets_8bpp\n    demo_guix_all_widgets_8bpp_rotated_ccw\n    guix_all_widgets_8bpp_rotated_ccw_binary\n    guix_all_widgets_8bpp_rotated_cw_binary\n    guix_all_widgets_8bpp_rotated_cw_binary.c\n    all_widgets_8bpp_rotated_ccw.c\n    all_widgets_8bpp_rotated_cw_binary.c\n    all_widgets_8bpp_rotated_cw.c_rotated_ccw_REG_TESTS
     guix_all_widgets_8bpp_rotated_ccw
     guix_all_widgets_8bpp_rotated_ccw_block_move
     guix_all_widgets_8bpp_rotated_ccw_canvas_copy
@@ -712,7 +712,7 @@ set(all_widgets_synergy_8bpp_rotated_cw_dave2d_disabled_FILE_LIST
     scroll_wheel_screen.c
     shapes_screen.c)
 
-set(all_widgets_synergy_8bpp_rotated_cw_dave2d_disabled_REG_TESTS
+set(all_widgets_synergy_8bpp_rotated_cw_dave2d_disabled_REG_TESTS\n    guix_all_widgets_synergy_8bpp_rotated_cw_dave2d_disabled_RESOLUTION\n    guix_all_widgets_synergy_8bpp_rotated_cw_dave2d_disabled_RESOLUTION
     guix_all_widgets_synergy_8bpp_rotated_cw_dave2d_disabled)
 
 set(all_widgets_24xrgb_rotated_ccw_FILE_LIST
