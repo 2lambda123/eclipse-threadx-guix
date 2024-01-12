@@ -62,4 +62,3 @@ Root: HKLM; Subkey: "Software\Microsoft\Azure_RTOS\GUIX\InstallDir"; ValueType: 
 
 [Run]
 Filename: "{tmp}\vc_redist.x86.exe"; StatusMsg: "Installing Visual C++ 2015-2019 Redistributable(x86)"; Parameters:"/passive"
-

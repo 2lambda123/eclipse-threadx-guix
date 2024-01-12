@@ -9,7 +9,6 @@
 /*                                                                        */
 /**************************************************************************/
 
-
 /**************************************************************************/
 /**************************************************************************/
 /**                                                                       */
@@ -19,13 +18,13 @@
 /**                                                                       */
 /**************************************************************************/
 #ifdef WIN32
-#include "tx_api.h"
 #include "gx_api.h"
-#include "gx_system.h"
-#include "gx_display.h"
-#include "windows.h"
-#include "gx_win32_display_driver.h"
 #include "gx_dave2d_simulation_display_driver.h"
+#include "gx_display.h"
+#include "gx_system.h"
+#include "gx_win32_display_driver.h"
+#include "tx_api.h"
+#include "windows.h"
 
 /**************************************************************************/
 /*                                                                        */
@@ -70,38 +69,36 @@
 /*  12-31-2023     Ting Zhu                 Initial Version 6.4.0         */
 /*                                                                        */
 /**************************************************************************/
-UINT win32_dave2d_graphics_driver_setup_24xrgb_rotated(GX_DISPLAY* display)
-{
-    GX_WIN32_DISPLAY_DRIVER_DATA* data;
+UINT win32_dave2d_graphics_driver_setup_24xrgb_rotated(GX_DISPLAY *display) {
+  GX_WIN32_DISPLAY_DRIVER_DATA *data;
 
-    /* Initialize the low-level drawing function pointers.
+  /* Initialize the low-level drawing function pointers.
 
-       For windows, these are always just the generic funcions,
-       but for some hardware, these will be customized,
-       optimized functions specific to that hardware.  */
+     For windows, these are always just the generic funcions,
+     but for some hardware, these will be customized,
+     optimized functions specific to that hardware.  */
 
-    data = gx_win32_get_free_data_instance();
+  data = gx_win32_get_free_data_instance();
 
-    if (!data)
-    {
-        /* We don't have any free display data instance.  */
-        return(GX_FAILURE);
-    }
+  if (!data) {
+    /* We don't have any free display data instance.  */
+    return (GX_FAILURE);
+  }
 
-    /* Save off the format of this display.  */
-    data->win32_driver_type = GX_COLOR_FORMAT_24XRGB;
+  /* Save off the format of this display.  */
+  data->win32_driver_type = GX_COLOR_FORMAT_24XRGB;
 
-    _gx_dave2d_simulation_display_driver_24xrgb_rotated_setup(display, data, gx_win32_display_buffer_toggle);
+  _gx_dave2d_simulation_display_driver_24xrgb_rotated_setup(
+      display, data, gx_win32_display_buffer_toggle);
 
-    win32_dave2d_simulation_24xrgb_bitmap_header_create(display);
+  win32_dave2d_simulation_24xrgb_bitmap_header_create(display);
 
-    /* Create the GUIX / Windows event thread
-       This thread is a substitute for a touch screen
-       or keyboard driver thread that would be running
-       on embedded hardware.  */
-    GX_WIN32_EVENT_THREAD_CREATE(data, "GUI-WIN32-24xrgb");
+  /* Create the GUIX / Windows event thread
+     This thread is a substitute for a touch screen
+     or keyboard driver thread that would be running
+     on embedded hardware.  */
+  GX_WIN32_EVENT_THREAD_CREATE(data, "GUI-WIN32-24xrgb");
 
-    return(GX_SUCCESS);
+  return (GX_SUCCESS);
 }
 #endif /* WIN32 */
-
