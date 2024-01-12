@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ "$#" -ne 2 ]; then
-    echo "Usage: $0 \"<version>\" \"<date>\""
-    exit 1
+  echo "Usage: $0 \"<version>\" \"<date>\""
+  exit 1
 fi
 
 # Change the current working directory to the parent directory of this script.
